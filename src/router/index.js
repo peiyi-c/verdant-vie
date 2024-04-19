@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HelloWorld from "../components/HelloWorld.vue";
+import Home from "../pages/Home.vue";
+import ThemingKit from "../pages/ThemingKit.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: HelloWorld,
+    component: Home,
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: ThemingKit,
   },
 ];
 
