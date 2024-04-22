@@ -5,20 +5,33 @@
     <div class="container">
       <!-- shop logo -->
       <a href="/">
-        <img src="/logo.svg" alt="logo vie" class="" />
+        <img src="/logo.svg" alt="logo vie" class="w-75" />
       </a>
       <div class="d-flex d-lg-none w-50 gap-2 justify-content-end">
         <!-- navbar menu icon -->
         <button
-          class="navbar-toggler"
+          class="btn btn-sm navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarItems"
           aria-controls="navbarItems"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          @click="() => (isOpen = !isOpen)"
         >
-          <span class="navbar-toggler-icon"></span>
+          <svg
+            class="navbar-icon"
+            :class="{ up: isOpen }"
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+            fill="#333333"
+          >
+            <path
+              d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+            />
+          </svg>
         </button>
       </div>
 
@@ -28,25 +41,15 @@
           class="navbar-nav my-5 my-md-0 ms-lg-5 me-auto mb-2 mb-lg-0 pt-3 pt-lg-0 text-center d-flex gap-5"
         >
           <li v-for="item in items" :key="item.id" class="nav-item">
-            <NavItem :name="item.name" :path="item.path" />
+            <NavItem
+              :name="item.name"
+              :path="item.path"
+              @toggle="() => (isOpen = !isOpen)"
+            />
           </li>
         </ul>
         <!-- shopping bag -->
-        <div class="mt-5 mt-lg-0 text-center text-lg-end shopping-bag">
-          <button class="btn btn-sm shopping-bag__btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 -960 960 960"
-              width="24"
-              fill="#22031f"
-            >
-              <path
-                d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z"
-              />
-            </svg>
-          </button>
-        </div>
+        <ShoppingBag />
       </div>
     </div>
   </nav>
@@ -54,10 +57,11 @@
 
 <script>
 import NavItem from "./NavItem.vue";
+import ShoppingBag from "./ShoppingBag.vue";
 
 export default {
   name: "Navbar",
-  components: { NavItem },
+  components: { NavItem, ShoppingBag },
   data() {
     return {
       items: [
@@ -67,27 +71,32 @@ export default {
         { id: 4, name: "home style", path: "/home_style" },
         { id: 5, name: "accessory", path: "accessory" },
       ],
+      isOpen: false,
     };
   },
 };
 </script>
 
 <style lang="scss">
+.navbar {
+  &-icon {
+    transform: rotate(90deg);
+    transition: fill 0.8s ease-in;
+    transition: transform 0.5s ease-in-out;
+    &:hover {
+      fill: #b0d3da;
+    }
+    &.up {
+      transform: rotate(-90deg);
+    }
+  }
+}
 ul.navbar-nav {
   text-transform: uppercase;
 
   & a:hover {
     color: #a0b1b6 !important;
     transition: color 0.25s ease-in-out;
-  }
-}
-
-.shopping-bag {
-  &__btn {
-    &:focus,
-    &:active {
-      border: none;
-    }
   }
 }
 </style>

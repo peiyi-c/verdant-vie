@@ -3,13 +3,16 @@
   <main class="container h-100 mt-10">
     <router-view></router-view>
   </main>
+  <ShoppingCart />
 </template>
+
 <script>
 import Navbar from "./components/Navbar.vue";
+import ShoppingCart from "./components/ShoppingCart.vue";
 
 export default {
   name: "App",
-  components: { Navbar },
+  components: { Navbar, ShoppingCart },
   data() {
     return {
       window: {

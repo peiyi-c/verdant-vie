@@ -1,5 +1,5 @@
 <template>
-  <router-link class="nav-link text-dark" :to="path">
+  <router-link class="nav-link text-dark" :to="path" @click="handleToggle">
     <span
       v-if="window.width <= 991"
       data-bs-toggle="collapse"
@@ -18,6 +18,11 @@ export default {
   name: "NavItem",
   props: ["name", "path"],
   inject: ["window"],
+  methods: {
+    handleToggle() {
+      this.$emit("toggle");
+    },
+  },
 };
 </script>
 
