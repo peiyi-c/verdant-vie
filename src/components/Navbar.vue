@@ -1,55 +1,64 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
+  <nav
+    class="navbar navbar-expand-lg fixed-top shadow-sm px-5 py-3 bg-primary-subtle"
+  >
+    <div class="container">
+      <!-- shop logo -->
       <a href="/">
-        <img src="../../public/logo.svg" alt="logo vie" class="" />
+        <img src="/logo.svg" alt="logo vie" class="" />
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarItems"
-        aria-controls="navbarItems"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarItems">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link text-dark" to="/all">ALL </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-dark" to="/hair"
-              >HAIR</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-dark" to="/face"
-              >FACE</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-dark" to="/body"
-              >BODY</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-dark" to="/home"
-              >HOME
-            </router-link>
+      <div class="d-flex d-lg-none w-50 gap-2 justify-content-center">
+        <!-- search icon -->
+        <form class="d-flex d-lg-none" role="search">
+          <input
+            class="form-control me-1"
+            type="search"
+            placeholder="Search..."
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-sm btn-outline-primary rounded-2 btn-search"
+            type="submit"
+          >
+            <span class="material-symbols-outlined mt-1"> Search </span>
+          </button>
+        </form>
+        <!-- navbar menu icon -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarItems"
+          aria-controls="navbarItems"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- navbar -->
+      <div class="collapse navbar-collapse fs-6" id="navbarItems">
+        <ul
+          class="navbar-nav my-5 my-md-0 ms-lg-5 me-auto mb-2 mb-lg-0 pt-3 pt-lg-0 text-center gap-5"
+        >
+          <li v-for="item in items" :key="item.id" class="nav-item">
+            <NavItem :name="item.name" :path="item.path" />
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <!-- search icon -->
+        <form class="d-none d-xl-flex" role="search">
           <input
             class="form-control me-2"
             type="search"
             placeholder="Search..."
             aria-label="Search"
           />
-          <button class="btn btn-outline-primary rounded-1" type="submit">
-            <span class="material-symbols-outlined"> search </span>
+          <button
+            class="btn btn-sm btn-outline-primary rounded-2 btn-search"
+            type="submit"
+          >
+            <span class="material-symbols-outlined mt-1"> Search </span>
           </button>
         </form>
       </div>
@@ -57,6 +66,38 @@
   </nav>
 </template>
 
-<script></script>
+<script>
+import NavItem from "./NavItem.vue";
 
-<style></style>
+export default {
+  name: "Navbar",
+  components: { NavItem },
+  data() {
+    return {
+      items: [
+        { id: 1, name: "all", path: "/" },
+        { id: 2, name: "hair", path: "hair" },
+        { id: 3, name: "face", path: "face" },
+        { id: 4, name: "body", path: "body" },
+        { id: 5, name: "home style", path: "home_style" },
+        { id: 6, name: "accessory", path: "accessory" },
+      ],
+    };
+  },
+};
+</script>
+
+<style lang="scss">
+ul.navbar-nav {
+  text-transform: uppercase;
+
+  & a:hover {
+    color: #a0b1b6 !important;
+    transition: color 0.25s ease-in-out;
+  }
+}
+
+.btn-search:hover span {
+  color: #a0b1b6;
+}
+</style>
