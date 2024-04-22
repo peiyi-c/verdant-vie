@@ -12,7 +12,7 @@ $input-placeholder-color: #a0b1b6;
 
 // FONTS
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Script&display=swap");
 
 nav,
 main,
@@ -21,5 +21,49 @@ footer {
     sans-serif;
 }
 
-// OVERWRITE Bootstrap
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "League Script", Cambria, Cochin, Georgia, Times,
+    "Times New Roman", serif, cursive;
+}
+
+// SPACER
+@import "../../node_modules/bootstrap/scss/_functions";
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 6,
+  9: $spacer * 7,
+  10: $spacer * 8,
+);
+
+$utilities: (
+  "opacity": (
+    property: opacity,
+    print: true,
+    values: (
+      0: 0,
+      25: 0.25,
+      50: 0.5,
+      75: 0.75,
+      85: 0.85,
+      90: 0.9,
+      95: 0.95,
+      100: 1,
+    ),
+  ),
+);
+
+// OVERWRITE Bootstrap style
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

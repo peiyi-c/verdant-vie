@@ -1,9 +1,12 @@
 <template>
   <Navbar />
-  <router-view></router-view>
+  <main class="container h-100 mt-10">
+    <router-view></router-view>
+  </main>
 </template>
 <script>
 import Navbar from "./components/Navbar.vue";
+
 export default {
   name: "App",
   components: { Navbar },
