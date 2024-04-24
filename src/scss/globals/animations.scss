@@ -1,0 +1,19 @@
+.blink {
+  animation: blink 2s ease-in-out 10;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+    fill-opacity: 0;
+    fill: #e1ebe2;
+  }
+  50% {
+    opacity: 0.5;
+    fill-opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    fill-opacity: 0;
+    fill: #b0d3da;
+  }
+}

@@ -13,21 +13,23 @@
         :src="item.image"
         class="card-img-top rounded-1 object-fit-cover"
         :alt="item.name"
-        loading="lazy"
       />
       <!-- skeleton -->
       <svg
         v-show="!imgLoaded"
-        class="bd-placeholder-img rounded-1 opacity-25 w-100"
+        class="bd-placeholder-img rounded-1 w-100"
         height="140"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="Placeholder"
+        aria-label="placeholder"
         preserveAspectRatio="xMidYMid slice"
         focusable="false"
       >
         <title>Placeholder</title>
-        <rect class="w-100 h-100" fill="#e1ebe2"></rect>
+        <rect
+          class="w-100 h-100 bg-gradient-info blink"
+          fill="transparent"
+        ></rect>
       </svg>
       <span
         class="card-img-text w-100 position-absolute d-block top-50 text-center text-secondary-emphasis"
@@ -67,6 +69,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "ProductCard",
@@ -98,6 +101,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 @use "../scss/utility/" as *;
 .card {
