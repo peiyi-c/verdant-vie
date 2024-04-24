@@ -1,7 +1,10 @@
 <template>
   <div
+    data-bs-toggle="modal"
+    data-bs-target="#productModal"
     class="card mb-3 col-6 col-sm-5 col-md-4 col-lg-3 col-xxl-2 d-flex align-items-center justify-content-end"
     :class="{ subtle: isSoldOut }"
+    @click="setItem"
   >
     <!-- image -->
     <div
@@ -33,8 +36,9 @@
       </svg>
       <span
         class="card-img-text w-100 position-absolute d-block top-50 text-center text-secondary-emphasis"
-        >{{ item.type }}</span
       >
+        {{ item.type }}
+      </span>
     </div>
 
     <div class="card-body w-100 px-0">
@@ -77,11 +81,15 @@ export default {
   data() {
     return {
       imgLoaded: false,
+      modalItem: "",
     };
   },
   methods: {
     onImgLoad() {
       this.imgLoaded = true;
+    },
+    setItem() {
+      this.$emit("setItem", this.item);
     },
   },
   computed: {

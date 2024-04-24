@@ -8,21 +8,50 @@
   </div>
   <!-- products -->
   <section class="mt-4 row justify-content-evenly">
-    <ProductCard v-for="item in hair" :key="item.id" :item="item" />
-    <ProductCard v-for="item in body" :key="item.id" :item="item" />
-    <ProductCard v-for="item in face" :key="item.id" :item="item" />
-    <ProductCard v-for="item in home_style" :key="item.id" :item="item" />
-    <ProductCard v-for="item in accessory" :key="item.id" :item="item" />
+    <ProductCard
+      v-for="item in hair"
+      :key="item.id"
+      :item="item"
+      @set-item="(item) => (modalItem = item)"
+    />
+    <ProductCard
+      v-for="item in body"
+      :key="item.id"
+      :item="item"
+      @set-item="(item) => (modalItem = item)"
+    />
+    <ProductCard
+      v-for="item in face"
+      :key="item.id"
+      :item="item"
+      @set-item="(item) => (modalItem = item)"
+    />
+    <ProductCard
+      v-for="item in home_style"
+      :key="item.id"
+      :item="item"
+      @set-item="(item) => (modalItem = item)"
+    />
+    <ProductCard
+      v-for="item in accessory"
+      :key="item.id"
+      :item="item"
+      @set-item="(item) => (modalItem = item)"
+    />
   </section>
+  <!-- product modal -->
+  <ProductModal :item="modalItem" />
 </template>
 
 <script>
 import ProductCard from "../components/ProductCard.vue";
 import title from "../assets/images/home-page/verdant-vie.svg";
+import ProductModal from "../components/ProductModal.vue";
+
 export default {
   name: "HomePage",
   inject: ["products"],
-  components: { ProductCard },
+  components: { ProductCard, ProductModal },
   data() {
     return {
       title: title,
@@ -31,6 +60,7 @@ export default {
       hair: this.products.hair,
       face: this.products.face,
       home_style: this.products.home_style,
+      modalItem: "",
     };
   },
 };

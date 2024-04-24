@@ -2,7 +2,12 @@
   <h1 class="text-center">Home Style</h1>
   <!-- products -->
   <section class="mt-4 row justify-content-evenly">
-    <ProductCard v-for="item in items" :key="item.id" :item="item" />
+    <ProductCard
+      v-for="item in items"
+      :key="item.id"
+      :item="item"
+      @set-item="(item) => (modalItem = item)"
+    />
   </section>
   <!-- hero -->
   <section class="position-relative">
@@ -19,18 +24,22 @@
       <h2 class="heading opacity-75 text-dark">At Home. Be You.</h2>
     </div>
   </section>
+  <!-- product modal -->
+  <ProductModal :item="modalItem" />
 </template>
 
 <script>
 import ProductCard from "../components/ProductCard.vue";
+import ProductModal from "../components/ProductModal.vue";
 
 export default {
   name: "HomeStyle",
   inject: ["products"],
-  components: { ProductCard },
+  components: { ProductCard, ProductModal },
   data() {
     return {
       items: this.products.home_style,
+      modalItem: "",
     };
   },
 };

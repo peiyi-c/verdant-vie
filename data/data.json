@@ -2,7 +2,7 @@
   {
     "accessory": [
       {
-        "id": 1,
+        "id": "accessory1",
         "inStock": 100,
         "listedOn": "04/01/2024",
         "image": "images/accessory/accessory-p-1.jpeg",
@@ -12,7 +12,7 @@
         "discount": null
       },
       {
-        "id": 2,
+        "id": "accessory2",
         "inStock": 100,
         "listedOn": "04/01/2024",
         "image": "images/accessory/accessory-p-2.jpeg",
@@ -24,7 +24,7 @@
     ],
     "body": [
       {
-        "id": 1,
+        "id": "body1",
         "inStock": 10,
         "listedOn": "04/24/2024",
         "image": "images/body/body-p-1.jpeg",
@@ -34,7 +34,7 @@
         "discount": 14.99
       },
       {
-        "id": 2,
+        "id": "body2",
         "inStock": 200,
         "listedOn": "12/04/2023",
         "image": "images/body/body-p-2.jpeg",
@@ -44,7 +44,7 @@
         "discount": 13.49
       },
       {
-        "id": 3,
+        "id": "body3",
         "inStock": 0,
         "listedOn": "01/12/2023",
         "image": "images/body/body-p-3.jpg",
@@ -54,7 +54,7 @@
         "discount": null
       },
       {
-        "id": 4,
+        "id": "body4",
         "inStock": 10,
         "listedOn": "01/12/2023",
         "image": "images/body/body-p-4.jpeg",
@@ -64,7 +64,7 @@
         "discount": null
       },
       {
-        "id": 5,
+        "id": "body5",
         "inStock": 1000,
         "listedOn": "01/12/2023",
         "image": "images/body/body-p-5.jpeg",
@@ -76,7 +76,7 @@
     ],
     "face": [
       {
-        "id": 1,
+        "id": "face1",
         "inStock": 10,
         "listedOn": "04/24/2024",
         "image": "images/face/face-p-1.jpeg",
@@ -86,7 +86,7 @@
         "discount": 14.99
       },
       {
-        "id": 2,
+        "id": "face2",
         "inStock": 10,
         "listedOn": "04/24/2023",
         "image": "images/face/face-p-2.jpeg",
@@ -96,7 +96,7 @@
         "discount": 8
       },
       {
-        "id": 3,
+        "id": "face3",
         "inStock": 10,
         "listedOn": "04/24/2022",
         "image": "images/face/face-p-3.jpeg",
@@ -106,7 +106,7 @@
         "discount": null
       },
       {
-        "id": 4,
+        "id": "face4",
         "inStock": 50,
         "listedOn": "01/01/2024",
         "image": "images/face/face-p-4.jpeg",
@@ -116,7 +116,7 @@
         "discount": null
       },
       {
-        "id": 5,
+        "id": "face5",
         "inStock": 10,
         "listedOn": "04/24/2020",
         "image": "images/face/face-p-5.jpeg",
@@ -128,7 +128,7 @@
     ],
     "hair": [
       {
-        "id": 1,
+        "id": "hair1",
         "inStock": 100,
         "listedOn": "08/01/2024",
         "image": "images/hair/hair-p-1.jpeg",
@@ -138,7 +138,7 @@
         "discount": 15
       },
       {
-        "id": 2,
+        "id": "hair2",
         "inStock": 40,
         "listedOn": "07/1/2022",
         "image": "images/hair/hair-p-2.jpeg",
@@ -150,7 +150,7 @@
     ],
     "home_style": [
       {
-        "id": 1,
+        "id": "homestyle1",
         "inStock": 100,
         "listedOn": "05/01/2024",
         "image": "images/home-style/home-p-1.jpeg",
@@ -160,7 +160,7 @@
         "discount": 14.99
       },
       {
-        "id": 2,
+        "id": "homestyle2",
         "inStock": 0,
         "listedOn": "05/01/2021",
         "image": "images/home-style/home-p-2.jpeg",
