@@ -67,7 +67,6 @@ export default {
 </script>
 <style lang="scss">
 .card {
-  border: none;
   // image
   &-img-wrapper {
     background: #ececec67;

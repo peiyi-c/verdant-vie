@@ -1,5 +1,6 @@
 @use "../utility/" as *;
 
+// text
 .heading {
   font-size: rem(45);
   @include breakpoint-up(large) {
@@ -34,7 +35,7 @@
   text-decoration: line-through;
   color: #a0b1b6;
 }
-
-.subtle {
-  opacity: 0.6;
+// card component
+.card {
+  border: none;
 }

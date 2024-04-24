@@ -1,5 +1,27 @@
 [
   {
+    "accessory": [
+      {
+        "id": 1,
+        "inStock": 100,
+        "listedOn": "04/01/2024",
+        "image": "images/accessory/accessory-1.jpeg",
+        "name": "Vievie Tote Bag",
+        "type": "For you",
+        "price": 25,
+        "discount": null
+      },
+      {
+        "id": 2,
+        "inStock": 100,
+        "listedOn": "04/01/2024",
+        "image": "images/accessory/accessory-1.jpeg",
+        "name": "Vievie Necklace",
+        "type": "Handmade",
+        "price": 50,
+        "discount": null
+      }
+    ],
     "body": [
       {
         "id": 1,
@@ -66,7 +88,7 @@
       {
         "id": 2,
         "inStock": 10,
-        "listedOn": "04/24/2024",
+        "listedOn": "04/24/2023",
         "image": "images/face/face-1.jpeg",
         "name": "Face Mask",
         "type": "For all skin type",
@@ -76,7 +98,7 @@
       {
         "id": 3,
         "inStock": 10,
-        "listedOn": "04/24/2024",
+        "listedOn": "04/24/2022",
         "image": "images/face/face-1.jpeg",
         "name": "Restore Gel",
         "type": "For all skin type",
@@ -96,12 +118,12 @@
       {
         "id": 5,
         "inStock": 10,
-        "listedOn": "04/24/2024",
+        "listedOn": "04/24/2020",
         "image": "images/face/face-1.jpeg",
         "name": "Ultra Facial Cream",
         "type": "Mature skin care",
         "price": 150,
-        "discount": 14.99
+        "discount": 144.99
       }
     ],
     "hair": [
