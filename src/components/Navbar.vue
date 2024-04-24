@@ -65,9 +65,9 @@ export default {
   data() {
     return {
       items: [
-        { id: 1, name: "hair", path: "hair" },
-        { id: 2, name: "face", path: "face" },
-        { id: 3, name: "body", path: "body" },
+        { id: 1, name: "face", path: "face" },
+        { id: 2, name: "body", path: "body" },
+        { id: 3, name: "hair", path: "hair" },
         { id: 4, name: "home style", path: "/home_style" },
         { id: 5, name: "accessory", path: "accessory" },
       ],
