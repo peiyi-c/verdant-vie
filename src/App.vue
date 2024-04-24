@@ -4,15 +4,18 @@
     <router-view></router-view>
   </main>
   <ShoppingCart />
+  <Footer />
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
+import Footer from "./components/Footer.vue";
+import products from "../data/data.json";
 
 export default {
   name: "App",
-  components: { Navbar, ShoppingCart },
+  components: { Navbar, ShoppingCart, Footer },
   data() {
     return {
       window: {
@@ -35,8 +38,8 @@ export default {
   provide() {
     return {
       window: this.window,
+      products: products[0],
     };
   },
 };
 </script>
-<style></style>

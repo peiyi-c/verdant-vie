@@ -6,4 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 // import custom css
 import "./scss/custom.scss";
+// import global css
+import "./scss/globals/_index.scss";
 createApp(App).use(router).mount("#app");

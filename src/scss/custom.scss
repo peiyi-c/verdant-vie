@@ -12,7 +12,6 @@ $input-placeholder-color: #a0b1b6;
 
 // FONTS
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=League+Script&display=swap");
 
 nav,
 main,
@@ -27,8 +26,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "League Script", Cambria, Cochin, Georgia, Times,
-    "Times New Roman", serif, cursive;
+  font-family: Cochin, Georgia, Times, "Times New Roman", serif, cursive;
+}
+
+main {
+  min-height: 90svh;
 }
 
 // SPACER

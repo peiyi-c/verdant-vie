@@ -1,5 +1,10 @@
 <template>
   <h1 class="text-center">For Body</h1>
+  <!-- products -->
+  <section class="mt-4 row justify-content-around">
+    <ProductCard v-for="item in items" :key="item.id" :item="item" />
+  </section>
+  <!-- carousel -->
   <div id="carousel-body" class="carousel slide opacity-90">
     <div class="carousel-indicators">
       <button
@@ -26,8 +31,8 @@
           alt="Body Product Image 1"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+          <h3 class="heading">Body Essentials</h3>
+          <p>Embrace Every Inch</p>
         </div>
       </div>
       <div class="carousel-item">
@@ -38,8 +43,8 @@
           alt="Body Product Image 2"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+          <h3 class="heading">Glowing skin</h3>
+          <p>Our Body Products, Your Daily Ritual for Healthy</p>
         </div>
       </div>
     </div>
@@ -65,9 +70,16 @@
 </template>
 
 <script>
+import ProductCard from "../components/ProductCard.vue";
+
 export default {
   name: "Body",
+  inject: ["products"],
+  components: { ProductCard },
+  data() {
+    return {
+      items: this.products.body,
+    };
+  },
 };
 </script>
-
-<style></style>

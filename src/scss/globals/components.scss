@@ -1,0 +1,40 @@
+@use "../utility/" as *;
+
+.heading {
+  font-size: rem(45);
+  @include breakpoint-up(large) {
+    font-size: rem(50);
+  }
+  @include breakpoint-up(xlarge) {
+    font-size: rem(55);
+  }
+}
+
+.text {
+  font-size: rem(15);
+  @include breakpoint-up(medium) {
+    font-size: rem(16);
+  }
+  @include breakpoint-up(large) {
+    font-size: rem(18);
+  }
+}
+
+.text-sm {
+  font-size: rem(11);
+  @include breakpoint-up(medium) {
+    font-size: rem(13);
+  }
+  @include breakpoint-up(large) {
+    font-size: rem(14);
+  }
+}
+
+.strick {
+  text-decoration: line-through;
+  color: #a0b1b6;
+}
+
+.subtle {
+  opacity: 0.6;
+}
