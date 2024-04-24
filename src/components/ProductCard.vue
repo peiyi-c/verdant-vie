@@ -4,8 +4,14 @@
     :class="{ subtle: isSoldOut }"
   >
     <!-- image -->
-    <div class="card-img-wrapper position-relative">
-      <img :src="item.image" class="card-img-top rounded-1" :alt="item.name" />
+    <div
+      class="card-img-wrapper w-100 position-relative bg-secondary rounded-1"
+    >
+      <img
+        :src="item.image"
+        class="card-img-top rounded-1 object-fit-cover"
+        :alt="item.name"
+      />
       <span
         class="card-img-text w-100 position-absolute d-block top-50 text-center text-secondary-emphasis"
         >{{ item.type }}</span
@@ -66,6 +72,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@use "../scss/utility/" as *;
 .card {
   // image
   &-img-wrapper {
@@ -82,6 +89,7 @@ export default {
   }
   &-img-top {
     transition: opacity 0.25s ease-in;
+    max-height: rem(140);
   }
   &-img-text {
     transition: transform 3 ease-out 2;
