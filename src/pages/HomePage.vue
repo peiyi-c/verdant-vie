@@ -1,5 +1,11 @@
 <template>
-  <h1 class="text-center">Home</h1>
+  <div class="row justify-content-center">
+    <img
+      class="col-11 col-lg-10 col-xl-8"
+      :src="title"
+      alt="verdant vie shop"
+    />
+  </div>
   <!-- products -->
   <section class="mt-4 row justify-content-evenly">
     <ProductCard v-for="item in hair" :key="item.id" :item="item" />
@@ -12,13 +18,14 @@
 
 <script>
 import ProductCard from "../components/ProductCard.vue";
-
+import title from "../assets/images/home-page/verdant-vie.svg";
 export default {
   name: "HomePage",
   inject: ["products"],
   components: { ProductCard },
   data() {
     return {
+      title: title,
       accessory: this.products.accessory,
       body: this.products.body,
       hair: this.products.hair,
