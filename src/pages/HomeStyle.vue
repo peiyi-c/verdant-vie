@@ -4,12 +4,14 @@
   <section class="mt-4 row justify-content-evenly">
     <ProductCard v-for="item in items" :key="item.id" :item="item" />
   </section>
+  <!-- hero -->
   <section class="position-relative">
     <!-- https://www.pexels.com/photo/a-green-plants-on-brown-pots-9707239/ -->
     <img
       src="../assets/images/home-style/home-1.jpeg"
       class="d-block opacity-75 w-75 mx-auto"
       alt="At Home. Be You."
+      loading="lazy"
     />
     <div
       class="w-100 position-absolute bottom-0 pb-3 text-dark text-center d-none d-md-block"

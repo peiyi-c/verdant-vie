@@ -8,10 +8,27 @@
       class="card-img-wrapper w-100 position-relative bg-secondary rounded-1"
     >
       <img
+        v-show="imgLoaded"
+        @load="onImgLoad"
         :src="item.image"
         class="card-img-top rounded-1 object-fit-cover"
         :alt="item.name"
+        loading="lazy"
       />
+      <!-- skeleton -->
+      <svg
+        v-show="!imgLoaded"
+        class="bd-placeholder-img rounded-1 opacity-25 w-100"
+        height="140"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Placeholder"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <title>Placeholder</title>
+        <rect class="w-100 h-100" fill="#e1ebe2"></rect>
+      </svg>
       <span
         class="card-img-text w-100 position-absolute d-block top-50 text-center text-secondary-emphasis"
         >{{ item.type }}</span
@@ -54,6 +71,16 @@
 export default {
   name: "ProductCard",
   props: ["item"],
+  data() {
+    return {
+      imgLoaded: false,
+    };
+  },
+  methods: {
+    onImgLoad() {
+      this.imgLoaded = true;
+    },
+  },
   computed: {
     isNew() {
       let today = new Date().getTime();

@@ -4,12 +4,14 @@
   <section class="mt-4 row justify-content-evenly">
     <ProductCard v-for="item in items" :key="item.id" :item="item" />
   </section>
+  <!-- hero -->
   <section class="position-relative">
     <!-- https://www.pexels.com/photo/calm-woman-with-face-cream-5069395/ -->
     <img
       src="../assets/images/face/face-1.jpeg"
       class="d-block w-75 mx-auto rounded-0 opacity-90"
       alt="Soothe & Shining"
+      loading="lazy"
     />
     <div
       class="w-100 position-absolute top-50 pb-3 text-dark text-center d-none d-md-block"
