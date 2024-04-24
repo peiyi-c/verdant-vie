@@ -81,7 +81,7 @@
         "name": "Restore Gel",
         "type": "For all skin type",
         "price": 75,
-        "discount": 14.99
+        "discount": null
       },
       {
         "id": 4,
@@ -91,7 +91,7 @@
         "name": "Mint Face Water",
         "type": "For dry skin type",
         "price": 85,
-        "discount": 14.99
+        "discount": null
       },
       {
         "id": 5,
@@ -102,6 +102,50 @@
         "type": "Mature skin care",
         "price": 150,
         "discount": 14.99
+      }
+    ],
+    "hair": [
+      {
+        "id": 1,
+        "inStock": 100,
+        "listedOn": "08/01/2024",
+        "image": "images/hair/hair-1.jpg",
+        "name": "Avocado Shampoo",
+        "type": "For dry hair skin",
+        "price": 17.99,
+        "discount": 15
+      },
+      {
+        "id": 2,
+        "inStock": 40,
+        "listedOn": "07/1/2022",
+        "image": "images/hair/hair-1.jpg",
+        "name": "Hair dryer",
+        "type": "For all hair type",
+        "price": 45,
+        "discount": null
+      }
+    ],
+    "home_style": [
+      {
+        "id": 1,
+        "inStock": 100,
+        "listedOn": "05/01/2024",
+        "image": "images/home-style/home-1.jpeg",
+        "name": "Fragrance Spray",
+        "type": "For rooms",
+        "price": 15,
+        "discount": 14.99
+      },
+      {
+        "id": 2,
+        "inStock": 0,
+        "listedOn": "05/01/2021",
+        "image": "images/home-style/home-1.jpeg",
+        "name": "Pillow",
+        "type": "For your bed",
+        "price": 105,
+        "discount": null
       }
     ]
   }

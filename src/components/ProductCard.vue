@@ -34,12 +34,10 @@
       <div class="d-flex w-50 gap-2">
         <span
           class="card-text text-primary text-sm"
-          :class="{ strick: item.discount !== null }"
+          :class="{ strick: hasDiscount }"
           >{{ item.price }} €</span
         >
-        <span
-          v-show="item.discount !== null"
-          class="card-text text-danger text-sm"
+        <span v-show="hasDiscount" class="card-text text-danger text-sm"
           >{{ item.discount }} €</span
         >
       </div>
@@ -60,6 +58,9 @@ export default {
     },
     isSoldOut() {
       return this.item.inStock === 0;
+    },
+    hasDiscount() {
+      return this.item.discount !== null;
     },
   },
 };
