@@ -1,11 +1,11 @@
 <template>
   <h1 class="text-center">For Body</h1>
   <!-- products -->
-  <section class="mt-4 row justify-content-around">
+  <section class="mt-4 row justify-content-evenly">
     <ProductCard v-for="item in items" :key="item.id" :item="item" />
   </section>
   <!-- carousel -->
-  <div id="carousel-body" class="carousel slide opacity-90">
+  <div id="carousel-body" class="carousel slide opacity-90 w-75 mx-auto">
     <div class="carousel-indicators">
       <button
         type="button"
@@ -27,7 +27,7 @@
         <!-- https://www.pexels.com/photo/crop-woman-with-eco-brush-and-soap-bar-7262410/ -->
         <img
           src="../assets/images/body/body-1.jpeg"
-          class="d-block w-100 rounded-2"
+          class="d-block w-100"
           alt="Body Product Image 1"
         />
         <div class="carousel-caption d-none d-md-block">
@@ -39,7 +39,7 @@
         <!--https://www.pexels.com/photo/stack-of-natural-soaps-placed-on-table-6621497/-->
         <img
           src="../assets/images/body/body-2.jpeg"
-          class="d-block w-100 rounded-2"
+          class="d-block w-100"
           alt="Body Product Image 2"
         />
         <div class="carousel-caption d-none d-md-block">

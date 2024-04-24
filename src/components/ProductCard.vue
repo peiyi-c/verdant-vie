@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card mb-3 col-6 col-sm-5 col-md-4 col-lg-3 d-flex align-items-center justify-content-end"
+    class="card mb-3 col-6 col-sm-5 col-md-4 col-lg-3 col-xxl-2 d-flex align-items-center justify-content-end"
     :class="{ subtle: isSoldOut }"
   >
     <!-- image -->

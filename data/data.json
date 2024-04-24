@@ -40,6 +40,68 @@
         "type": "For sensitive skin",
         "price": 10,
         "discount": null
+      },
+      {
+        "id": 5,
+        "inStock": 1000,
+        "listedOn": "01/12/2023",
+        "image": "images/body/body-1.jpeg",
+        "name": "Body Scrub",
+        "type": "For normal skin",
+        "price": 10,
+        "discount": null
+      }
+    ],
+    "face": [
+      {
+        "id": 1,
+        "inStock": 10,
+        "listedOn": "04/24/2024",
+        "image": "images/face/face-1.jpeg",
+        "name": "Soothing Cleanser",
+        "type": "For oily skin type",
+        "price": 15,
+        "discount": 14.99
+      },
+      {
+        "id": 2,
+        "inStock": 10,
+        "listedOn": "04/24/2024",
+        "image": "images/face/face-1.jpeg",
+        "name": "Face Mask",
+        "type": "For all skin type",
+        "price": 8.5,
+        "discount": 8
+      },
+      {
+        "id": 3,
+        "inStock": 10,
+        "listedOn": "04/24/2024",
+        "image": "images/face/face-1.jpeg",
+        "name": "Restore Gel",
+        "type": "For all skin type",
+        "price": 75,
+        "discount": 14.99
+      },
+      {
+        "id": 4,
+        "inStock": 50,
+        "listedOn": "01/01/2024",
+        "image": "images/face/face-1.jpeg",
+        "name": "Mint Face Water",
+        "type": "For dry skin type",
+        "price": 85,
+        "discount": 14.99
+      },
+      {
+        "id": 5,
+        "inStock": 10,
+        "listedOn": "04/24/2024",
+        "image": "images/face/face-1.jpeg",
+        "name": "Ultra Facial Cream",
+        "type": "Mature skin care",
+        "price": 150,
+        "discount": 14.99
       }
     ]
   }
