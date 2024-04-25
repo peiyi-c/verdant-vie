@@ -10,6 +10,7 @@
     <div class="modal-dialog">
       <div class="modal-content bg-secondary">
         <div class="modal-header border-0">
+          <!-- item name -->
           <h3 class="modal-title fw-bold">{{ item.name }}</h3>
           <button
             type="button"
@@ -27,14 +28,17 @@
             />
             <div class="w-100 px-5">
               <p class="text-center fs-6">{{ item.type }}</p>
+              <!-- item price -->
               <p class="text-center">{{ item.discount || item.price }} €</p>
-
-              <!-- add to cart -->
+              <!-- decrement, increment buttons -->
               <div
-                v-if="itemsInCart[this.item.id] > 0"
+                v-if="itemIsInCart(item.id)"
                 class="d-flex gap-3 border-0 align-items-center"
               >
-                <button class="btn btn-info btn-sm rounded-circle">
+                <button
+                  @click="decreaseQuantity(item.id)"
+                  class="btn btn-info btn-sm rounded-circle"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24"
@@ -45,8 +49,13 @@
                     <path d="M200-440v-80h560v80H200Z" />
                   </svg>
                 </button>
-                <span class="card-title lh-xs">{{ itemsInCart[item.id] }}</span>
-                <button class="btn btn-info btn-sm rounded-circle">
+                <span class="card-title lh-xs">{{
+                  getItemQuantity(item.id)
+                }}</span>
+                <button
+                  @click="increaseQuantity(item.id)"
+                  class="btn btn-info btn-sm rounded-circle"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24"
@@ -60,8 +69,11 @@
                   </svg>
                 </button>
               </div>
+              <!-- add to cart button -->
               <div v-else class="w-100 text-center">
-                <button class="btn btn-info">Add To Cart</button>
+                <button @click="increaseQuantity(item.id)" class="btn btn-info">
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>
@@ -71,12 +83,26 @@
   </div>
 </template>
 <script>
+import useShoppingCart from "../composables/useShoppingCart";
+
 export default {
   name: "ProductCard",
   props: ["show", "item"],
-  inject: ["itemsInCart"],
-  data() {
-    return {};
+  setup() {
+    const {
+      currentItems,
+      getItemQuantity,
+      decreaseQuantity,
+      itemIsInCart,
+      increaseQuantity,
+    } = useShoppingCart();
+    return {
+      currentItems,
+      getItemQuantity,
+      itemIsInCart,
+      decreaseQuantity,
+      increaseQuantity,
+    };
   },
 };
 </script>

@@ -21,15 +21,10 @@ export default {
       window: {
         width: 0,
       },
-      itemsInCart: {
-        body1: 1,
-        body2: 2,
-      },
     };
   },
   mounted() {
     window.addEventListener("resize", this.handleResize);
-    this.handleResize();
   },
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
@@ -43,7 +38,6 @@ export default {
     return {
       window: this.window,
       products: products[0],
-      itemsInCart: this.itemsInCart,
     };
   },
 };
