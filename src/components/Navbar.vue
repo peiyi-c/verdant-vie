@@ -4,9 +4,9 @@
   >
     <div class="container">
       <!-- shop logo -->
-      <a href="/">
+      <router-link class="nav-link" to="/">
         <img src="/logo.svg" alt="logo vie" class="w-75" />
-      </a>
+      </router-link>
       <div class="d-flex d-lg-none w-50 gap-2 justify-content-end">
         <!-- navbar: icon for mobile -->
         <button
