@@ -8,7 +8,7 @@
         <img src="/logo.svg" alt="logo vie" class="w-75" />
       </a>
       <div class="d-flex d-lg-none w-50 gap-2 justify-content-end">
-        <!-- navbar menu icon -->
+        <!-- navbar: icon for mobile -->
         <button
           class="btn btn-sm navbar-toggler border-0"
           type="button"
@@ -68,7 +68,7 @@ export default {
         { id: 1, name: "face", path: "face" },
         { id: 2, name: "body", path: "body" },
         { id: 3, name: "hair", path: "hair" },
-        { id: 4, name: "home style", path: "/home_style" },
+        { id: 4, name: "home style", path: "home_style" },
         { id: 5, name: "accessory", path: "accessory" },
       ],
       isOpen: false,
