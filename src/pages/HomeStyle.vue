@@ -29,16 +29,21 @@
 </template>
 
 <script>
+import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import ProductModal from "../components/ProductModal.vue";
 
 export default {
   name: "HomeStyle",
-  inject: ["products"],
   components: { ProductCard, ProductModal },
+  setup() {
+    const products = inject("products");
+    return {
+      items: products.home_style,
+    };
+  },
   data() {
     return {
-      items: this.products.home_style,
       modalItem: "",
     };
   },

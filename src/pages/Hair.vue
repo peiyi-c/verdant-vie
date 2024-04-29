@@ -80,16 +80,21 @@
 </template>
 
 <script>
+import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import ProductModal from "../components/ProductModal.vue";
 
 export default {
   name: "Hair",
-  inject: ["products"],
   components: { ProductCard, ProductModal },
+  setup() {
+    const products = inject("products");
+    return {
+      items: products.hair,
+    };
+  },
   data() {
     return {
-      items: this.products.hair,
       modalItem: "",
     };
   },

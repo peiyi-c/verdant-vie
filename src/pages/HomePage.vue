@@ -44,22 +44,27 @@
 </template>
 
 <script>
+import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import title from "../assets/images/home-page/verdant-vie.svg";
 import ProductModal from "../components/ProductModal.vue";
 
 export default {
   name: "HomePage",
-  inject: ["products"],
   components: { ProductCard, ProductModal },
+  setup() {
+    const products = inject("products");
+    return {
+      title,
+      accessory: products.accessory,
+      body: products.body,
+      hair: products.hair,
+      face: products.face,
+      home_style: products.home_style,
+    };
+  },
   data() {
     return {
-      title: title,
-      accessory: this.products.accessory,
-      body: this.products.body,
-      hair: this.products.hair,
-      face: this.products.face,
-      home_style: this.products.home_style,
       modalItem: "",
     };
   },

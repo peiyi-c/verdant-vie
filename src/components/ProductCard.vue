@@ -81,7 +81,6 @@ export default {
   data() {
     return {
       imgLoaded: false,
-      modalItem: "",
     };
   },
   methods: {

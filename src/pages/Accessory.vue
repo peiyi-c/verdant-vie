@@ -14,16 +14,21 @@
 </template>
 
 <script>
+import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import ProductModal from "../components/ProductModal.vue";
 
 export default {
   name: "Accessory",
-  inject: ["products"],
   components: { ProductCard, ProductModal },
+  setup() {
+    const products = inject("products");
+    return {
+      items: products.accessory,
+    };
+  },
   data() {
     return {
-      items: this.products.accessory,
       modalItem: "",
     };
   },
