@@ -1,7 +1,7 @@
 <template>
   <router-link class="nav-link text-dark" :to="path" @click="handleToggle">
     <span
-      v-if="window.width <= 991"
+      v-if="windowWidth <= 991"
       data-bs-toggle="collapse"
       data-bs-target="#navbarItems"
       aria-controls="navbarItems"
@@ -14,10 +14,17 @@
 </template>
 
 <script>
+import useWindowWidth from "../composables/useWindowWidth";
 export default {
   name: "NavItem",
   props: ["name", "path"],
-  inject: ["window"],
+  // inject: ["window"],
+  setup() {
+    let { windowWidth } = useWindowWidth();
+    return {
+      windowWidth,
+    };
+  },
   methods: {
     handleToggle() {
       this.$emit("toggle");

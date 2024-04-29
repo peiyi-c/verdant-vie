@@ -16,27 +16,27 @@ import products from "../data/data.json";
 export default {
   name: "App",
   components: { Navbar, ShoppingCart, Footer },
-  data() {
-    return {
-      window: {
-        width: 0,
-      },
-    };
-  },
-  mounted() {
-    window.addEventListener("resize", this.handleResize);
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.window.width = window.innerWidth;
-    },
-  },
+  // data() {
+  //   return {
+  //     window: {
+  //       width: 0,
+  //     },
+  //   };
+  // },
+  // mounted() {
+  //   window.addEventListener("resize", this.handleResize);
+  // },
+  // unmounted() {
+  //   window.removeEventListener("resize", this.handleResize);
+  // },
+  // methods: {
+  //   handleResize() {
+  //     this.window.width = window.innerWidth;
+  //   },
+  // },
   provide() {
     return {
-      window: this.window,
+      // window: this.window,
       products: products[0],
     };
   },
