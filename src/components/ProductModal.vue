@@ -90,18 +90,16 @@ export default {
   props: ["show", "item"],
   setup() {
     const {
-      currentItems,
       getItemQuantity,
+      increaseQuantity,
       decreaseQuantity,
       itemIsInCart,
-      increaseQuantity,
     } = useShoppingCart();
     return {
-      currentItems,
       getItemQuantity,
-      itemIsInCart,
-      decreaseQuantity,
       increaseQuantity,
+      decreaseQuantity,
+      itemIsInCart,
     };
   },
 };
