@@ -1,9 +1,13 @@
+import { ref, watch } from "vue";
 import useLocalStorage from "./useLocalStorage";
 
 export default function useShoppingCart() {
-  const { savedItems: currentItems, setLocalStorage } =
-    useLocalStorage("vie-shopping");
+  const { savedItems, setLocalStorage } = useLocalStorage("vie-shopping");
+  const currentItems = ref(savedItems.value);
 
+  function getCurrentItems() {
+    return currentItems.value;
+  }
   function increaseQuantity(itemId) {
     // if cart is empty
     if (currentItems.value.find((item) => item.id == itemId) == null) {
@@ -18,14 +22,6 @@ export default function useShoppingCart() {
         }
       });
     }
-    // update localStorage
-    setLocalStorage();
-  }
-
-  function removeFromCart(itemId) {
-    currentItems.value = currentItems.value.filter(
-      (item) => item.id !== itemId
-    );
   }
 
   function decreaseQuantity(itemId) {
@@ -42,8 +38,12 @@ export default function useShoppingCart() {
         }
       });
     }
-    // update localStorage
-    setLocalStorage();
+  }
+
+  function removeFromCart(itemId) {
+    currentItems.value = currentItems.value.filter(
+      (item) => item.id !== itemId
+    );
   }
 
   function getItemQuantity(itemId) {
@@ -54,8 +54,16 @@ export default function useShoppingCart() {
     return currentItems.value.some((it) => it.id == itemId);
   }
 
-  return {
+  watch(
     currentItems,
+    (updatedItems) => {
+      setLocalStorage(updatedItems);
+    },
+    { deep: true }
+  );
+
+  return {
+    getCurrentItems,
     getItemQuantity,
     removeFromCart,
     itemIsInCart,

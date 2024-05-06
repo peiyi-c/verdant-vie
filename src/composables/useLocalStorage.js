@@ -9,10 +9,11 @@ export default function useLocalStorage(key) {
       return [];
     }
   }
-  let savedItems = ref(getLocalStorage(key));
+  const savedItems = ref(getLocalStorage(key));
 
-  function setLocalStorage() {
-    localStorage.setItem(key, JSON.stringify(savedItems.value));
+  function setLocalStorage(newItems) {
+    localStorage.setItem(key, JSON.stringify(newItems));
   }
+
   return { savedItems, setLocalStorage };
 }
