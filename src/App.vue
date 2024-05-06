@@ -18,9 +18,8 @@ export default {
   name: "App",
   components: { Navbar, ShoppingCart, Footer },
   setup() {
-    let modalItem = ref({});
+    const modalItem = ref({});
     const windowWidth = ref(window.innerWidth);
-
     function onResize() {
       windowWidth.value = window.innerWidth;
     }
