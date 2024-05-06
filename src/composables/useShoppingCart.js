@@ -21,11 +21,13 @@ export default function useShoppingCart() {
     // update localStorage
     setLocalStorage();
   }
+
   function removeFromCart(itemId) {
     currentItems.value = currentItems.value.filter(
       (item) => item.id !== itemId
     );
   }
+
   function decreaseQuantity(itemId) {
     // remove from cart if item quantity is 1
     if (currentItems.value.find((item) => item.id === itemId)?.quantity === 1) {

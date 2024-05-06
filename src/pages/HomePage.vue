@@ -65,11 +65,6 @@ export default {
       modalItem,
     };
   },
-  // data() {
-  //   return {
-  //     modalItem: "",
-  //   };
-  // },
 };
 </script>
 

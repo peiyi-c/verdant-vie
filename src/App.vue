@@ -12,40 +12,29 @@ import Navbar from "./components/Navbar.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
 import Footer from "./components/Footer.vue";
 import products from "../data/data.json";
-import { ref, provide } from "vue";
+import { ref, provide, onMounted, onUnmounted } from "vue";
 
 export default {
   name: "App",
   components: { Navbar, ShoppingCart, Footer },
   setup() {
     let modalItem = ref({});
+    const windowWidth = ref(window.innerWidth);
+
+    function onResize() {
+      windowWidth.value = window.innerWidth;
+    }
+
+    onMounted(() => {
+      window.addEventListener("resize", onResize);
+    });
+    onUnmounted(() => {
+      window.removeEventListener("resize", onResize);
+    });
 
     provide("products", products[0]);
     provide("modalItem", modalItem);
+    provide("width", windowWidth);
   },
-  // data() {
-  //   return {
-  //     window: {
-  //       width: 0,
-  //     },
-  //   };
-  // },
-  // mounted() {
-  //   window.addEventListener("resize", this.handleResize);
-  // },
-  // unmounted() {
-  //   window.removeEventListener("resize", this.handleResize);
-  // },
-  // methods: {
-  //   handleResize() {
-  //     this.window.width = window.innerWidth;
-  //   },
-  // },
-  // provide() {
-  //   return {
-  //     // window: this.window,
-  //     products: products[0],
-  //   };
-  // },
 };
 </script>

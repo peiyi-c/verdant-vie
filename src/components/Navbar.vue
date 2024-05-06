@@ -56,34 +56,20 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import data from "../../data/data.json";
 import NavItem from "./NavItem.vue";
 import ShoppingBag from "./ShoppingBag.vue";
-import useWindowWidth from "../composables/useWindowWidth";
 
 export default {
   name: "Navbar",
   components: { NavItem, ShoppingBag },
-  // data() {
-  //   return {
-  //     items: data[1]["items"],
-  //     isOpen: false,
-  //   };
-  // },
   setup() {
-    let { windowWidth } = useWindowWidth();
     const items = ref(data[1]["items"]);
     const isOpen = ref(false);
-
-    watch(windowWidth, () => {
-      windowWidth <= 991 ? (isOpen.value = true) : (isOpen.value = false);
-    });
-
     return {
       items,
       isOpen,
-      windowWidth,
     };
   },
 };
