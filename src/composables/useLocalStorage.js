@@ -1,5 +1,3 @@
-import { ref } from "vue";
-
 export default function useLocalStorage(key) {
   function getLocalStorage(key) {
     const jsonValue = localStorage.getItem(key);
@@ -9,7 +7,7 @@ export default function useLocalStorage(key) {
       return [];
     }
   }
-  const savedItems = ref(getLocalStorage(key));
+  const savedItems = getLocalStorage(key);
 
   function setLocalStorage(newItems) {
     localStorage.setItem(key, JSON.stringify(newItems));
