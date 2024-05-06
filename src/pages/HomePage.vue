@@ -54,6 +54,7 @@ export default {
   components: { ProductCard, ProductModal },
   setup() {
     const products = inject("products");
+    const modalItem = inject("modalItem");
     return {
       title,
       accessory: products.accessory,
@@ -61,13 +62,14 @@ export default {
       hair: products.hair,
       face: products.face,
       home_style: products.home_style,
+      modalItem,
     };
   },
-  data() {
-    return {
-      modalItem: "",
-    };
-  },
+  // data() {
+  //   return {
+  //     modalItem: "",
+  //   };
+  // },
 };
 </script>
 

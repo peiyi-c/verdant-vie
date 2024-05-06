@@ -89,14 +89,16 @@ export default {
   components: { ProductCard, ProductModal },
   setup() {
     const products = inject("products");
+    const modalItem = inject("modalItem");
     return {
       items: products.body,
+      modalItem,
     };
   },
-  data() {
-    return {
-      modalItem: "",
-    };
-  },
+  // data() {
+  //   return {
+  //     modalItem: "",
+  //   };
+  // },
 };
 </script>

@@ -12,13 +12,16 @@ import Navbar from "./components/Navbar.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
 import Footer from "./components/Footer.vue";
 import products from "../data/data.json";
-import { provide } from "vue";
+import { ref, provide } from "vue";
 
 export default {
   name: "App",
   components: { Navbar, ShoppingCart, Footer },
   setup() {
+    let modalItem = ref({});
+
     provide("products", products[0]);
+    provide("modalItem", modalItem);
   },
   // data() {
   //   return {
