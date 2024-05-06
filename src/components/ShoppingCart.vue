@@ -12,7 +12,7 @@
         class="offcanvas-title text-center text-capitalize"
         id="shoppingCartLabel"
       >
-        Overview
+        Shopping cart
       </h3>
       <button
         type="button"
@@ -21,8 +21,57 @@
         aria-label="Close"
       ></button>
     </div>
-    <div class="offcanvas-body">
-      <p>Shopping Cart overview text goes here.</p>
+    <div class="offcanvas-body d-flex flex-column align-items-center">
+      <!-- current items -->
+      <p v-if="!items.length" class="my-5 text-center">
+        No product selected yet.
+      </p>
+
+      <div v-else class="d-flex flex-column gap-3">
+        <ShoppingCartItem v-for="item in items" :key="item.id" :item="item" />
+      </div>
+
+      <div
+        v-if="items.length"
+        class="my-3 w-100 d-flex justify-content-center gap-2"
+      >
+        <button class="btn btn-primary rounded-1">
+          <span class="lh-sm text-white">Check Out</span>
+        </button>
+        <button
+          class="btn btn-outline-primary rounded-1"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          <span class="lh-sm text-primary">Continue Shopping</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
+<script>
+import useShoppingCart from "../composables/useShoppingCart";
+import ShoppingCartItem from "./ShoppingCartItem.vue";
+
+export default {
+  name: "ShoppingCart",
+  components: { ShoppingCartItem },
+  setup() {
+    const {
+      currentItems,
+      getItemQuantity,
+      decreaseQuantity,
+      itemIsInCart,
+      increaseQuantity,
+    } = useShoppingCart();
+    return {
+      items: currentItems,
+      getItemQuantity,
+      itemIsInCart,
+      decreaseQuantity,
+      increaseQuantity,
+    };
+  },
+};
+</script>
+<style lang="scss"></style>
