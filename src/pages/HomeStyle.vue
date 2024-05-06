@@ -40,7 +40,7 @@ export default {
     const products = inject("products");
     const modalItem = inject("modalItem");
     return {
-      items: products.home_style,
+      items: products.homestyle,
       modalItem,
     };
   },
