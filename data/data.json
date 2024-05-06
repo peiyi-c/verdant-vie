@@ -148,7 +148,7 @@
         "discount": null
       }
     ],
-    "home_style": [
+    "homestyle": [
       {
         "id": "homestyle1",
         "inStock": 100,
