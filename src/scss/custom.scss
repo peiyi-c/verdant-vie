@@ -15,9 +15,10 @@ $input-placeholder-color: #a0b1b6;
 
 nav,
 main,
-footer {
+footer,
+div {
   font-family: "Lato", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-    sans-serif;
+    sans-serif !important;
 }
 
 h1,
@@ -59,10 +60,39 @@ $utilities: (
       25: 0.25,
       50: 0.5,
       75: 0.75,
+      80: 0.8,
       85: 0.85,
       90: 0.9,
       95: 0.95,
       100: 1,
+    ),
+  ),
+  "height": (
+    property: height,
+    class: h,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      80: 80%,
+      85: 85%,
+      90: 90%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+  "width": (
+    property: width,
+    class: w,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      80: 80%,
+      85: 85%,
+      90: 90%,
+      100: 100%,
+      auto: auto,
     ),
   ),
 );
