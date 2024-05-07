@@ -31,7 +31,7 @@
       >
         <span class="text">{{ item.name }}</span>
         <span
-          v-show="isNew && !item.inStock === 0"
+          v-show="isProductNew(item) && item.inStock"
           class="card-badge badge rounded-pill text-bg-secondary"
           >new</span
         >
@@ -61,29 +61,22 @@
 
 <script>
 import useImageLoad from "../composables/useImageLoad";
-
+import useProducts from "../composables/useProducts";
 export default {
   name: "ProductCard",
   props: ["item"],
   setup() {
     const { imgLoaded, onImgLoad } = useImageLoad();
+    const { isProductNew } = useProducts();
     return {
       imgLoaded,
       onImgLoad,
+      isProductNew,
     };
   },
   methods: {
     setItem() {
       this.$emit("setItem", this.item);
-    },
-  },
-  computed: {
-    isNew() {
-      let today = new Date().getTime();
-      let listedDate = new Date(this.item.listedOn).getTime();
-      // differece in days
-      let diff = Math.floor((today - listedDate) / (24 * 60 * 60 * 1000));
-      return diff < 30 * 3;
     },
   },
 };
