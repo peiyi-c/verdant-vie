@@ -3,7 +3,7 @@
     data-bs-toggle="modal"
     data-bs-target="#productModal"
     class="card mb-3 col-6 col-sm-5 col-md-4 col-lg-3 col-xxl-2 d-flex align-items-center justify-content-end"
-    :class="{ subtle: isSoldOut }"
+    :class="{ subtle: item.inStock === 0 }"
     @click="setItem"
   >
     <!-- image -->
@@ -12,7 +12,7 @@
     >
       <img
         v-show="imgLoaded"
-        @load="onImgLoad"
+        @load="onImgLoad()"
         :src="item.image"
         class="card-img-top rounded-1 object-fit-cover"
         :alt="item.name"
@@ -48,12 +48,12 @@
       >
         <span class="text">{{ item.name }}</span>
         <span
-          v-show="isNew && !isSoldOut"
+          v-show="isNew && !item.inStock === 0"
           class="card-badge badge rounded-pill text-bg-secondary"
           >new</span
         >
         <span
-          v-show="isSoldOut"
+          v-show="item.inStock === 0"
           class="card-badge badge rounded-pill text-bg-light text-warning"
           >sold out</span
         >
@@ -63,10 +63,12 @@
       <div class="d-flex w-50 gap-2">
         <span
           class="card-text text-primary text-sm"
-          :class="{ strick: hasDiscount }"
+          :class="{ strick: item.discount !== null }"
           >{{ item.price }} €</span
         >
-        <span v-show="hasDiscount" class="card-text text-danger text-sm"
+        <span
+          v-show="item.discount !== null"
+          class="card-text text-danger text-sm"
           >{{ item.discount }} €</span
         >
       </div>
@@ -75,18 +77,22 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
   name: "ProductCard",
   props: ["item"],
-  data() {
+  setup() {
+    const imgLoaded = ref(false);
+    function onImgLoad() {
+      imgLoaded.value = true;
+    }
     return {
-      imgLoaded: false,
+      imgLoaded,
+      onImgLoad,
     };
   },
   methods: {
-    onImgLoad() {
-      this.imgLoaded = true;
-    },
     setItem() {
       this.$emit("setItem", this.item);
     },
@@ -98,12 +104,6 @@ export default {
       // differece in days
       let diff = Math.floor((today - listedDate) / (24 * 60 * 60 * 1000));
       return diff < 30 * 3;
-    },
-    isSoldOut() {
-      return this.item.inStock === 0;
-    },
-    hasDiscount() {
-      return this.item.discount !== null;
     },
   },
 };
