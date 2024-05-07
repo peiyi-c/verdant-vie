@@ -14,13 +14,12 @@
 </template>
 
 <script>
-import { inject } from "vue";
-
+import useWindowWidth from "../composables/useWindowWidth";
 export default {
   name: "NavItem",
   props: ["name", "path"],
   setup() {
-    const width = inject("width");
+    const { width } = useWindowWidth();
     return {
       width,
     };
