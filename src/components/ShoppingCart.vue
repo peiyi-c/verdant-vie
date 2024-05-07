@@ -50,28 +50,17 @@
   </div>
 </template>
 <script>
-import useShoppingCart from "../composables/useShoppingCart";
 import ShoppingCartItem from "./ShoppingCartItem.vue";
+import useShoppingCart from "../composables/useShoppingCart";
 
 export default {
   name: "ShoppingCart",
   components: { ShoppingCartItem },
   setup() {
-    const {
-      currentItems,
-      getItemQuantity,
-      decreaseQuantity,
-      itemIsInCart,
-      increaseQuantity,
-    } = useShoppingCart();
+    const { currentItems: items } = useShoppingCart();
     return {
-      items: currentItems,
-      getItemQuantity,
-      itemIsInCart,
-      decreaseQuantity,
-      increaseQuantity,
+      items,
     };
   },
 };
 </script>
-<style lang="scss"></style>

@@ -1,13 +1,10 @@
 import { ref, watch } from "vue";
 import useLocalStorage from "./useLocalStorage";
 
-export default function useShoppingCart() {
-  const { savedItems, setLocalStorage } = useLocalStorage("vie-shopping");
-  const currentItems = ref(savedItems.value);
+const { savedItems, setLocalStorage } = useLocalStorage("vie-shopping");
+const currentItems = ref(savedItems);
 
-  function getCurrentItems() {
-    return currentItems.value;
-  }
+export default function useShoppingCart() {
   function increaseQuantity(itemId) {
     // if cart is empty
     if (currentItems.value.find((item) => item.id == itemId) == null) {
@@ -63,7 +60,7 @@ export default function useShoppingCart() {
   );
 
   return {
-    getCurrentItems,
+    currentItems,
     getItemQuantity,
     removeFromCart,
     itemIsInCart,
