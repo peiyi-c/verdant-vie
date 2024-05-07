@@ -1,10 +1,12 @@
 import { ref, watch } from "vue";
 import useLocalStorage from "./useLocalStorage";
+import useProducts from "./useProducts";
 
 const { savedItems, setLocalStorage } = useLocalStorage("vie-shopping");
 const currentItems = ref(savedItems);
 
 export default function useShoppingCart() {
+  const { getProductInfo } = useProducts();
   function increaseQuantity(itemId) {
     // if cart is empty
     if (currentItems.value.find((item) => item.id == itemId) == null) {
@@ -47,6 +49,17 @@ export default function useShoppingCart() {
     return currentItems.value.find((it) => it.id == itemId)?.quantity || 0;
   }
 
+  function getItemSubtotal(itemId) {
+    const item = getProductInfo(itemId);
+    if (item) {
+      const price = item["discount"] || item["price"];
+      const quantity = getItemQuantity(itemId);
+      return (price * quantity).toFixed(2);
+    } else {
+      return 0;
+    }
+  }
+
   function itemIsInCart(itemId) {
     return currentItems.value.some((it) => it.id == itemId);
   }
@@ -62,6 +75,7 @@ export default function useShoppingCart() {
   return {
     currentItems,
     getItemQuantity,
+    getItemSubtotal,
     removeFromCart,
     itemIsInCart,
     decreaseQuantity,
