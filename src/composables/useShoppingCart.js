@@ -7,6 +7,7 @@ const currentItems = ref(savedItems);
 
 export default function useShoppingCart() {
   const { getProductInfo } = useProducts();
+
   function increaseQuantity(itemId) {
     // if cart is empty
     if (currentItems.value.find((item) => item.id == itemId) == null) {

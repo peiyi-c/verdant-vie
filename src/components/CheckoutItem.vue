@@ -45,7 +45,10 @@
     <div class="col-6 text-start text-md-center col-md-3 fs-sm">
       <div class="btn-group" role="group" aria-label="button-group">
         <div class="d-flex gap-3 border-0 align-items-center">
-          <button class="btn btn-info btn-sm rounded-circle">
+          <button
+            class="btn btn-info btn-sm rounded-circle"
+            @click="decreaseQuantity(item.id)"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -59,7 +62,10 @@
 
           <span class="card-title lh-xs">{{ item.quantity }}</span>
 
-          <button class="btn btn-info btn-sm rounded-circle">
+          <button
+            class="btn btn-info btn-sm rounded-circle"
+            @click="increaseQuantity(item.id)"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -91,9 +97,16 @@ export default {
   setup(props) {
     const { getProductInfo } = useProducts();
     const product = getProductInfo(props.item.id);
-    const { getItemSubtotal, removeFromCart } = useShoppingCart();
+    const {
+      decreaseQuantity,
+      increaseQuantity,
+      getItemSubtotal,
+      removeFromCart,
+    } = useShoppingCart();
     return {
       product,
+      decreaseQuantity,
+      increaseQuantity,
       getItemSubtotal,
       removeFromCart,
     };
