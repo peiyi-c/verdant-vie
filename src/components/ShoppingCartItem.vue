@@ -3,7 +3,7 @@
     <div class="w-100 px-3 rounded-1 d-flex gap-3 gap-lg-4">
       <img
         :src="product.image"
-        class="rounded-1 object-fit-cover w-50 h-80 border border-1 border-light"
+        class="rounded-1 object-fit-cover w-50 h-80 border border-1 border-light show"
       />
 
       <div class="w-100 row align-content-start">

@@ -12,7 +12,7 @@
   <!-- carousel -->
   <div
     id="carousel-hair"
-    class="carousel carousel-fade slide opacity-90 w-75 mx-auto"
+    class="carousel carousel-fade slide opacity-90 w-90 mx-auto"
   >
     <div class="carousel-indicators">
       <button
@@ -32,27 +32,29 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <!-- https://www.pexels.com/photo/blank-cream-tube-on-fresh-chestnut-leaf-4465124/ -->
+        <!-- https://unsplash.com/photos/blonde-haired-woman-in-black-top-surrounded-by-tall-plants-ArQIWcmOlA8 -->
         <img
-          src="../assets/images/hair/hair-1.jpg"
+          :class="imgLoaded ? 'show' : ''"
+          @load="onImgLoad()"
+          src="../assets/images/hair/hair-4.jpeg"
           class="d-block w-100"
           alt="Hair Product Image 1"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="heading">Unlock Your Hair</h3>
+          <h3 class="heading text-primary">Unlock Your Hair</h3>
           <p>From Roots to Ends</p>
         </div>
       </div>
       <div class="carousel-item">
-        <!-- https://www.pexels.com/photo/blank-cosmetic-tube-on-fresh-chestnut-leaf-4465121/ -->
+        <!-- https://unsplash.com/photos/green-fern-plant-inside-clear-glass-vase-9IcKPSQ9G5Q -->
         <img
-          src="../assets/images/hair/hair-2.jpeg"
-          class="d-block w-100"
+          src="../assets/images/hair/hair-5.jpg"
+          class="d-block w-100 show"
           alt="Hair Product Image 2"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="heading">Hair Care Redefined</h3>
-          <p>Start from Today</p>
+          <h3 class="heading text-warning">Hair Reset</h3>
+          <p class="text-dark">Start from Today</p>
         </div>
       </div>
     </div>
@@ -83,6 +85,7 @@
 import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import ProductModal from "../components/ProductModal.vue";
+import useImageLoaded from "../composables/useImageLoad";
 
 export default {
   name: "Hair",
@@ -90,9 +93,12 @@ export default {
   setup() {
     const products = inject("products");
     const modalItem = inject("modalItem");
+    const { imgLoaded, onImgLoad } = useImageLoaded();
     return {
       items: products.hair,
       modalItem,
+      imgLoaded,
+      onImgLoad,
     };
   },
 };

@@ -5,7 +5,7 @@
     <div class="container">
       <!-- shop logo -->
       <router-link class="nav-link" to="/">
-        <img src="/logo.svg" alt="logo vie" class="w-75" />
+        <img src="/logo.svg" alt="logo vie" class="w-75 show" />
       </router-link>
       <div class="d-flex d-lg-none w-50 gap-2 justify-content-end">
         <!-- navbar: icon for mobile -->

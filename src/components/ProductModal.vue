@@ -23,7 +23,7 @@
           <div class="w-100 rounded-1 d-flex gap-2 gap-md-3 gap-lg-4">
             <img
               :src="item.image"
-              class="rounded-1 object-fit-cover w-50 text-center border border-1 border-light"
+              class="rounded-1 object-fit-cover w-50 text-center border border-1 border-light show"
               :alt="item.name"
             />
             <div class="w-100 px-5">

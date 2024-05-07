@@ -11,29 +11,12 @@
       class="card-img-wrapper w-100 position-relative bg-secondary rounded-1"
     >
       <img
-        v-show="imgLoaded"
+        :class="imgLoaded ? 'show' : ''"
         @load="onImgLoad()"
         :src="item.image"
         class="card-img-top rounded-1 object-fit-cover"
         :alt="item.name"
       />
-      <!-- skeleton -->
-      <svg
-        v-show="!imgLoaded"
-        class="bd-placeholder-img rounded-1 w-100"
-        height="140"
-        xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        aria-label="placeholder"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-      >
-        <title>Placeholder</title>
-        <rect
-          class="w-100 h-100 bg-gradient-info blink"
-          fill="transparent"
-        ></rect>
-      </svg>
       <span
         class="card-img-text w-100 position-absolute d-block top-50 text-center text-secondary-emphasis"
       >
@@ -77,16 +60,13 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import useImageLoad from "../composables/useImageLoad";
 
 export default {
   name: "ProductCard",
   props: ["item"],
   setup() {
-    const imgLoaded = ref(false);
-    function onImgLoad() {
-      imgLoaded.value = true;
-    }
+    const { imgLoaded, onImgLoad } = useImageLoad();
     return {
       imgLoaded,
       onImgLoad,
@@ -114,6 +94,7 @@ export default {
 .card {
   // image
   &-img-wrapper {
+    height: rem(140);
     background: #ececec67;
     &:hover {
       .card-img-top {

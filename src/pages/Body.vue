@@ -12,7 +12,7 @@
   <!-- carousel -->
   <div
     id="carousel-body"
-    class="carousel carousel-fade slide opacity-90 w-75 mx-auto"
+    class="carousel carousel-fade slide opacity-90 w-90 mx-auto"
   >
     <div class="carousel-indicators">
       <button
@@ -34,6 +34,8 @@
       <div class="carousel-item active">
         <!-- https://www.pexels.com/photo/crop-woman-with-eco-brush-and-soap-bar-7262410/ -->
         <img
+          :class="imgLoaded ? 'show' : ''"
+          @load="onImgLoad()"
           src="../assets/images/body/body-1.jpeg"
           class="d-block w-100"
           alt="Body Product Image 1"
@@ -47,7 +49,7 @@
         <!--https://www.pexels.com/photo/stack-of-natural-soaps-placed-on-table-6621497/-->
         <img
           src="../assets/images/body/body-2.jpeg"
-          class="d-block w-100"
+          class="d-block w-100 show"
           alt="Body Product Image 2"
         />
         <div class="carousel-caption d-none d-md-block">
@@ -83,6 +85,7 @@
 import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import ProductModal from "../components/ProductModal.vue";
+import useImageLoaded from "../composables/useImageLoad";
 
 export default {
   name: "Body",
@@ -90,9 +93,12 @@ export default {
   setup() {
     const products = inject("products");
     const modalItem = inject("modalItem");
+    const { imgLoaded, onImgLoad } = useImageLoaded();
     return {
       items: products.body,
       modalItem,
+      imgLoaded,
+      onImgLoad,
     };
   },
 };

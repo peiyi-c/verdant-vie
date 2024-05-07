@@ -47,3 +47,12 @@
 .block {
   display: block;
 }
+
+// image
+img {
+  opacity: 0;
+  transition: opacity 1.5s;
+  &.show {
+    opacity: 1;
+  }
+}

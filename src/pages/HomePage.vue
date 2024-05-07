@@ -1,6 +1,8 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center h-auto">
     <img
+      :class="imgLoaded ? 'show' : ''"
+      @load="onImgLoad()"
       class="col-11 col-lg-10 col-xl-8"
       :src="title"
       alt="verdant vie shop"
@@ -48,6 +50,7 @@ import { inject } from "vue";
 import ProductCard from "../components/ProductCard.vue";
 import title from "../assets/images/home-page/verdant-vie.svg";
 import ProductModal from "../components/ProductModal.vue";
+import useImageLoad from "../composables/useImageLoad";
 
 export default {
   name: "HomePage",
@@ -55,6 +58,8 @@ export default {
   setup() {
     const products = inject("products");
     const modalItem = inject("modalItem");
+    const { imgLoaded, onImgLoad } = useImageLoad();
+
     return {
       title,
       accessory: products.accessory,
@@ -63,9 +68,9 @@ export default {
       face: products.face,
       home_style: products.home_style,
       modalItem,
+      imgLoaded,
+      onImgLoad,
     };
   },
 };
 </script>
-
-<style></style>
