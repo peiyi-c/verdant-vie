@@ -13,7 +13,7 @@
           <p class="fs-6">{{ item.quantity }} x {{ product.price }} €</p>
         </div>
         <!-- remove from cart button -->
-        <div class="col-2" role="button">
+        <div class="col-2" role="button" @click="() => removeFromCart(item.id)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -32,16 +32,17 @@
 </template>
 <script>
 import useProducts from "../composables/useProducts";
+import useShoppingCart from "../composables/useShoppingCart";
 export default {
   name: "ShoppingCartItem",
   props: ["item"],
-
   setup(props) {
     const { getProductInfo } = useProducts();
     const product = getProductInfo(props.item.id);
-
+    const { removeFromCart } = useShoppingCart();
     return {
       product,
+      removeFromCart,
     };
   },
 };
