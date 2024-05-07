@@ -34,6 +34,11 @@ const routes = [
     component: () => import("../pages/Accessory.vue"),
   },
   {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("../pages/Checkout.vue"),
+  },
+  {
     path: "/test",
     name: "test",
     component: () => import("../pages/ThemingKit.vue"),
