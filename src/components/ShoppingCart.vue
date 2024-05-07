@@ -30,14 +30,23 @@
       <div v-else class="d-flex flex-column gap-3">
         <ShoppingCartItem v-for="item in items" :key="item.id" :item="item" />
       </div>
-
+      <!-- Go to checkout page -->
       <div
         v-if="items.length"
         class="my-3 w-100 d-flex justify-content-center gap-2"
       >
-        <button class="btn btn-primary rounded-1">
-          <span class="lh-sm text-white">Check Out</span>
+        <button
+          class="btn btn-primary rounded-1"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        >
+          <router-link to="checkout">
+            <span class="lh-sm text-white text-decoration-none">
+              Check Out
+            </span></router-link
+          >
         </button>
+        <!-- Close shopping cart canvas -->
         <button
           class="btn btn-outline-primary rounded-1"
           data-bs-dismiss="offcanvas"
@@ -52,15 +61,19 @@
 <script>
 import ShoppingCartItem from "./ShoppingCartItem.vue";
 import useShoppingCart from "../composables/useShoppingCart";
-
+import { inject } from "vue";
 export default {
   name: "ShoppingCart",
   components: { ShoppingCartItem },
+
   setup() {
+    const modalItem = inject("modalItem");
     const { currentItems: items } = useShoppingCart();
     return {
+      modalItem,
       items,
     };
   },
 };
 </script>
+<style scoped></style>

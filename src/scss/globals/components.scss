@@ -56,3 +56,10 @@ img {
     opacity: 1;
   }
 }
+
+// links
+a {
+  &:hover {
+    text-decoration: none !important;
+  }
+}
