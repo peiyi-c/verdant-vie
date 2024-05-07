@@ -41,7 +41,9 @@
           alt="Hair Product Image 1"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="heading text-primary">Unlock Your Hair</h3>
+          <h3 class="heading text-primary" v-show="imgLoaded">
+            Unlock Your Hair
+          </h3>
           <p>From Roots to Ends</p>
         </div>
       </div>

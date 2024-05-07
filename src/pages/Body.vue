@@ -41,8 +41,8 @@
           alt="Body Product Image 1"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="heading">Body Essentials</h3>
-          <p>Embrace Every Inch</p>
+          <h3 class="heading" v-show="imgLoaded">Body Essentials</h3>
+          <p v-show="imgLoaded">Embrace Every Inch</p>
         </div>
       </div>
       <div class="carousel-item">

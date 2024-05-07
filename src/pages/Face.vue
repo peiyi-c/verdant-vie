@@ -24,7 +24,7 @@
       class="w-100 position-absolute top-50 pb-3 text-dark text-center d-none d-md-block"
     >
       <h2
-        class="heading text-secondary opacity-75 text-start p-10"
+        class="heading text-secondary-emphasis opacity-75 text-start p-8"
         v-show="imgLoaded"
       >
         Soothe & Shining
