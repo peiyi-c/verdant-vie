@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center">Check out</h1>
 
-  <div class="section-wrapper" v-if="items.length > 0">
+  <div v-if="items?.length > 0" class="section-wrapper">
     <!-- progress -->
     <section class="container">
       <div
@@ -83,7 +83,7 @@
       </button>
     </div>
   </div>
-  <h3 class="fs-4 my-6 text-center text-secondary">
+  <h3 v-else class="fs-4 my-6 text-center text-secondary">
     Your shopping cart is empty.
   </h3>
 </template>
