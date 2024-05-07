@@ -10,7 +10,9 @@
         <p class="col-12">{{ product.name }}</p>
         <div class="col-10">
           <!-- item quantity x price = total -->
-          <p class="fs-6">{{ item.quantity }} x {{ product.price }} €</p>
+          <p class="fs-6">
+            {{ item.quantity }} x {{ product.discount || product.price }} €
+          </p>
         </div>
         <!-- remove from cart button -->
         <div class="col-2" role="button" @click="() => removeFromCart(item.id)">
