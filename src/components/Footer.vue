@@ -6,7 +6,16 @@
       <div class="">
         <p class="fw-bold">INFO</p>
         <ul class="lh-lg">
-          <li>Our Story</li>
+          <li>
+            <span
+              role="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasFooter"
+              aria-controls="offcanvasFooter"
+            >
+              Our Story
+            </span>
+          </li>
           <li>Orders</li>
           <li>Customer Service</li>
           <li>FAQs</li>
@@ -29,15 +38,51 @@
       </div>
       <div class="">
         <p class="fw-bold">Follow Us</p>
+        <img
+          src="../assets/images/footer/facebook.svg"
+          class="show some-icon"
+        />
+        <img
+          src="../assets/images/footer/instagram.svg"
+          class="show some-icon"
+        />
+        <img
+          src="../assets/images/footer/twitterx.svg"
+          class="show some-icon"
+        />
       </div>
     </div>
   </footer>
+  <FooterCanvas />
 </template>
 
-<style>
-footer ul {
-  list-style: none;
+<script>
+import FooterCanvas from "./FooterCanvas.vue";
+export default {
+  components: { FooterCanvas },
+};
+</script>
 
-  padding-left: 0.25rem;
+<style lang="scss">
+footer {
+  ul {
+    list-style: none;
+    padding-left: 0.25rem;
+    li {
+      transition: color 0.25s linear;
+      &:hover {
+        color: var(--warning);
+      }
+    }
+  }
+  .some-icon {
+    width: 2rem;
+    margin-right: 5px;
+    height: auto;
+  }
+}
+#offcanvasFooter {
+  height: 60svh;
+  opacity: 1;
 }
 </style>
