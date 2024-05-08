@@ -13,6 +13,7 @@
         fill="#efbc9b"
       >
         <path
+          fill-opacity="0.75"
           d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
         />
       </svg>
@@ -20,16 +21,16 @@
 
     <!-- product -->
     <div
-      class="col-9 col-md-4 d-flex flex-row align-items-center gap-3 gap-md-2"
+      class="col-9 col-md-4 d-flex flex-row align-items-center gap-3 gap-md-1"
     >
       <img
         :src="product.image"
-        class="rounded-1 object-fit-cover w-50 h-75 border border-1 border-light show"
+        class="d-none d-sm-block rounded-1 object-fit-cover w-50 h-75 border border-1 border-light show"
       />
-      <h5 class="d-block fs-5">{{ product.name }}</h5>
+      <h5 class="fs-5 text-start">{{ product.name }}</h5>
     </div>
     <!-- price -->
-    <div class="col-12 text-end text-md-center col-md-2">
+    <div class="col-12 col-md-2 text-end text-md-start">
       <span
         :class="{
           strick: product.discount !== null,
@@ -38,11 +39,10 @@
         >{{ product.price }}</span
       >
       <span v-show="product.discount">{{ product.discount }}</span>
-      <span class="d-md-none">€</span>
-      <br />
+      <span class="d-md-none"> €</span>
     </div>
     <!-- quantity -->
-    <div class="col-6 text-start text-md-center col-md-3 fs-sm">
+    <div class="col-6 col-md-3 text-start text-md-end fs-sm">
       <div class="btn-group" role="group" aria-label="button-group">
         <div class="d-flex gap-3 border-0 align-items-center">
           <button
@@ -51,9 +51,9 @@
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              height="24"
+              height="20"
               viewBox="0 -960 960 960"
-              width="20"
+              width="16"
               fill="#e1ebe2"
             >
               <path d="M200-440v-80h560v80H200Z"></path>
@@ -68,9 +68,9 @@
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              height="24"
+              height="22"
               viewBox="0 -960 960 960"
-              width="20"
+              width="18"
               fill="#e1ebe2"
             >
               <path
@@ -82,7 +82,7 @@
       </div>
     </div>
     <!-- subtotal -->
-    <div class="col-6 text-end text-md-center col-md-3">
+    <div class="col-6 col-md-3 text-end text-md-center">
       {{ getItemSubtotal(item.id) }} <span class="d-md-none">€</span>
     </div>
   </div>

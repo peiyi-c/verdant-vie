@@ -35,17 +35,17 @@
         v-if="items.length"
         class="my-3 w-100 d-flex justify-content-center gap-2"
       >
-        <button
-          class="btn btn-primary rounded-1"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        >
-          <router-link to="checkout">
+        <router-link to="checkout">
+          <button
+            class="btn btn-primary rounded-1"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
             <span class="lh-sm text-white text-decoration-none">
               Check Out
-            </span></router-link
-          >
-        </button>
+            </span>
+          </button></router-link
+        >
         <!-- Close shopping cart canvas -->
         <button
           class="btn btn-outline-primary rounded-1"
