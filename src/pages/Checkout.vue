@@ -27,43 +27,106 @@
       </div>
       <div class="row text-center text-secondary-emphasis">
         <span class="col-4" :class="step >= 1 ? 'text-info' : 'text-secondary'"
-          >CART ITEMS</span
+          >1. CART ITEMS</span
         >
         <span class="col-4" :class="step >= 2 ? 'text-info' : 'text-secondary'"
-          >SHIPPING</span
+          >2. INFORMATION</span
         >
         <span class="col-4" :class="step == 3 ? 'text-info' : 'text-secondary'"
-          >CONFORM</span
+          >3. CONFIRM</span
         >
       </div>
     </section>
-    <!-- section 1: cart items -->
+    <!-- section 1: cart items & shipping options -->
     <section class="container mt-5" :class="step == 1 ? 'd-block' : 'd-none'">
       <h2 class="my-4 fs-3">
-        Cart Items ({{ items.length }}
+        Shopping Cart ({{ items.length }}
         {{ items.length > 1 ? "items" : "item" }})
       </h2>
+      <!-- checkout items -->
       <div class="container border border-1 border-info-subtle rounded-2">
         <div
-          class="table-header d-none d-md-flex py-2 mb-4 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+          class="table-header d-none d-md-flex py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
         >
           <span class="col-3">product</span>
           <span class="col-3">price (€)</span>
           <span class="col-3">quantity</span>
           <span class="col-3">subtotal (€)</span>
         </div>
-        <div class="table-body my-3">
+        <div class="table-body">
           <CheckoutItem v-for="item in items" :key="item.id" :item="item" />
         </div>
       </div>
+
+      <div class="d-flex-column d-md-flex gap-4">
+        <!-- shipping options and payment -->
+        <div
+          class="my-4 container border border-1 border-info-subtle rounded-2"
+        >
+          <div
+            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+          >
+            <span>shipping & payment</span>
+          </div>
+          <div class="table-body pt-2 pb-4 py-lg-5">
+            <div class="my-2">
+              <label for="shipping-des" class="mb-1"
+                >Shipping destination</label
+              >
+              <select class="form-select" name="shipping-des" id="shipping-des">
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="UK">UK</option>
+              </select>
+            </div>
+            <div class="my-2">
+              <label for="shipping-des" class="mb-1">Shipping method</label>
+              <select class="form-select" name="shipping-des" id="shipping-des">
+                <option value="dhl">DHL Post</option>
+                <option value="ups">Ups</option>
+                <option value="store">Pick up at store</option>
+              </select>
+            </div>
+            <div class="my-2">
+              <label for="payment" class="mb-1">Payment method</label>
+              <select class="form-select" name="payment" id="payment">
+                <option value="credit-card">Credit Card (VISA / Master)</option>
+                <option value="invoice">Invoice</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- billing information -->
+        <div
+          class="my-4 container border border-1 border-info-subtle rounded-2"
+        >
+          <div
+            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+          >
+            <span class="">billing information</span>
+          </div>
+          <div class="table-body">
+            <div class="row">
+              <p class="col-12 col-sm-6">Cart Items In Total:</p>
+              <p class="col-12 col-sm-6 text-end">
+                {{ getCartItemsTotal() }} €
+              </p>
+            </div>
+            <div class="row">
+              <p class="col-12 col-sm-6">Shipping Fee:</p>
+              <p class="col-12 col-sm-6 text-end">€</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- section 2: shipping -->
+    <!-- section 2: information -->
     <section class="container mt-5" :class="step == 2 ? 'd-block' : 'd-none'">
-      <h2 class="my-4 fs-3">Shipping options</h2>
+      <h2 class="my-4 fs-3">Information</h2>
     </section>
     <!-- section 2: confirm -->
     <section class="container mt-5" :class="step == 3 ? 'd-block' : 'd-none'">
-      <h2 class="my-4 fs-3">Confirmation</h2>
+      <h2 class="my-4 fs-3">Order overview</h2>
     </section>
 
     <div class="container my-3 d-flex w-100 justify-content-end gap-2">
@@ -74,12 +137,8 @@
       >
         Back
       </button>
-      <button
-        class="btn"
-        :class="step == 3 ? 'btn-primary' : 'btn-outline-primary '"
-        @click="nextStep"
-      >
-        {{ step == 3 ? "Order" : "Next" }}
+      <button class="btn btn-primary text-success" @click="nextStep">
+        {{ step == 3 ? "Order" : "Continue" }}
       </button>
     </div>
   </div>
@@ -97,7 +156,11 @@ export default {
   name: "Checkout",
   components: { CheckoutItem },
   setup() {
-    const { currentItems: items, cartItemsCount } = useShoppingCart();
+    const {
+      currentItems: items,
+      cartItemsCount,
+      getCartItemsTotal,
+    } = useShoppingCart();
     const step = ref(1);
     function nextStep() {
       if (step.value < 3) {
@@ -116,6 +179,7 @@ export default {
     return {
       items,
       cartItemsCount,
+      getCartItemsTotal,
       step,
       nextStep,
       lastStep,
