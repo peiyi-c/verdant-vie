@@ -1,14 +1,5 @@
 // COLORS
-$primary: #b0d3da;
-$secondary: #e1ebe2;
-$dark: #22031f;
-$info: #a0b1b6;
-$success: #333333;
-$warning: #ac9b99;
-$danger: #efbc9b;
-$light: #ececec67;
-
-$input-placeholder-color: #a0b1b6;
+@use "../scss//globals/colors.scss" as *;
 
 // FONTS
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
@@ -98,6 +89,13 @@ $utilities: (
     ),
   ),
 );
+
+// Nav
+$link-decoration: none;
+
+// Offcanvas
+$offcanvas-transition-duration: 0.65s;
+$offcanvas-backdrop-bg: var(--info);
 
 // OVERWRITE Bootstrap style
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

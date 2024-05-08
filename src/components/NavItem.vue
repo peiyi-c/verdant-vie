@@ -1,5 +1,5 @@
 <template>
-  <router-link class="nav-link text-dark" :to="path" @click="handleToggle">
+  <router-link class="text-dark" :to="path" @click="handleToggle">
     <span
       v-if="width <= 991"
       data-bs-toggle="collapse"
@@ -7,9 +7,10 @@
       aria-controls="navbarItems"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      class="nav-link text-dark"
       >{{ name }}</span
     >
-    <span v-else>{{ name }}</span>
+    <span v-else class="nav-link text-dark">{{ name }}</span>
   </router-link>
 </template>
 
@@ -32,4 +33,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.nav-link {
+  &:hover {
+    color: #a0b1b6 !important;
+    transition: color 0.25s ease-in-out;
+  }
+}
+</style>

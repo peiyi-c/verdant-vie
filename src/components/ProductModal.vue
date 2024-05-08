@@ -33,7 +33,7 @@
               <!-- decrement, increment buttons -->
               <div
                 v-if="itemIsInCart(item.id)"
-                class="d-flex gap-3 border-0 align-items-center"
+                class="d-flex gap-3 border-0 align-items-center justify-content-center"
               >
                 <button
                   @click="decreaseQuantity(item.id)"

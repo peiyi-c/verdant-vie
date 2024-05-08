@@ -3,7 +3,7 @@
     data-bs-toggle="modal"
     data-bs-target="#productModal"
     class="card mb-3 col-6 col-sm-5 col-md-4 col-lg-3 col-xxl-2 d-flex align-items-center justify-content-end"
-    :class="{ subtle: item.inStock === 0 }"
+    :class="{ soldout: item.inStock == 0 }"
     @click="setItem"
   >
     <!-- image -->
@@ -32,7 +32,7 @@
         <span class="text">{{ item.name }}</span>
         <span
           v-show="isProductNew(item) && item.inStock"
-          class="card-badge badge rounded-pill text-bg-secondary"
+          class="card-badge badge rounded-pill text-bg-secondary pointer-event"
           >new</span
         >
         <span
@@ -84,7 +84,16 @@ export default {
 
 <style lang="scss">
 @use "../scss/utility/" as *;
+
 .card {
+  &.soldout {
+    opacity: 0.8;
+    pointer-events: none;
+    cursor: not-allowed;
+    img {
+      filter: blur(2px);
+    }
+  }
   // image
   &-img-wrapper {
     height: rem(140);

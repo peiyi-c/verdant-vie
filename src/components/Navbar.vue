@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg fixed-top shadow-sm px-5 py-3 bg-primary-subtle"
+    class="navbar navbar-expand-lg fixed-top shadow-sm px-5 py-3 bg-primary-subtle rounded-bottom-2"
   >
     <div class="container">
       <!-- shop logo -->
@@ -91,10 +91,5 @@ export default {
 }
 ul.navbar-nav {
   text-transform: uppercase;
-
-  & a:hover {
-    color: #a0b1b6 !important;
-    transition: color 0.25s ease-in-out;
-  }
 }
 </style>

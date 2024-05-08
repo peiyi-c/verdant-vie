@@ -1,6 +1,6 @@
 <template>
   <div
-    class="offcanvas offcanvas-end"
+    class="offcanvas offcanvas-end rounded-2"
     data-bs-scroll="true"
     data-bs-backdrop="false"
     tabindex="-1"

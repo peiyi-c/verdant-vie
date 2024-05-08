@@ -1,0 +1,21 @@
+$primary: #b0d3da;
+$secondary: #e1ebe2;
+$dark: #22031f;
+$info: #a0b1b6;
+$success: #333333;
+$warning: #ac9b99;
+$danger: #efbc9b;
+$light: #ececec67;
+
+$input-placeholder-color: #a0b1b6;
+
+:root {
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --dark: #{$dark};
+  --info: #{$info};
+  --success: #{$success};
+  --warning: #{$warning};
+  --danger: #{$danger};
+  --light: #{$light};
+}
