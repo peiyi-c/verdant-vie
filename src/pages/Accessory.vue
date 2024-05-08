@@ -8,6 +8,10 @@
       :item="item"
       @set-item="(item) => (modalItem = item)"
     />
+
+    <h3 class="fs-3 mt-5 text-center text-secondary">
+      More accessories coming soon.
+    </h3>
   </section>
   <!-- product modal -->
   <ProductModal :item="modalItem" />
