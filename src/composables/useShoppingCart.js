@@ -61,6 +61,15 @@ export default function useShoppingCart() {
     }
   }
 
+  function getCartItemsTotal() {
+    return currentItems.value
+      .reduce(
+        (total, item) => Number(total) + Number(getItemSubtotal(item.id)),
+        0
+      )
+      .toFixed(2);
+  }
+
   function itemIsInCart(itemId) {
     return currentItems.value.some((it) => it.id == itemId);
   }
@@ -77,6 +86,7 @@ export default function useShoppingCart() {
     currentItems,
     getItemQuantity,
     getItemSubtotal,
+    getCartItemsTotal,
     removeFromCart,
     itemIsInCart,
     decreaseQuantity,
