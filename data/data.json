@@ -179,5 +179,42 @@
       { "id": 4, "name": "home style", "path": "home_style" },
       { "id": 5, "name": "accessory", "path": "accessory" }
     ]
+  },
+  {
+    "footer": [
+      {
+        "title": "｜Our Mission｜",
+        "subtitle": "We believe beauty is more about going back to the root.",
+        "text": [
+          "Our experts in laboratory are passionate about helping you recover the perfect products tailored to your individual needs. From skincare essentials to hair must-haves, we're here to accompany you every step of the way. Step into our comfort space and immerse yourself in a world of indulgence.",
+          "Verdant vie is your ultimate reset station. Experience the difference with verdant vie. Nature is beauty."
+        ]
+      },
+      {
+        "title": " ｜Orders｜",
+        "subtitle": "Friendly reminder",
+        "text": "Due to high demand for our products, we are currently having a high volume of orders. While we're working to fulfill all orders as usual. Rest assured, your order is being processed with the utmost care and attention to detail."
+      },
+      {
+        "title": " ｜Customer Service｜",
+        "subtitle": "24 Hotline",
+        "text": "If you need to return an item, please contact our customer service center within 7 days of receipt of the item and provide following information “product name”, “order number”, “reason for return” and a photo of the item. Our customer service agent will assist you with the subsequent operation."
+      },
+
+      {
+        "title": " ｜Store｜",
+        "subtitle": "Milestone",
+        "text": "Our flagship store is going to open in New Silbermond City next season, please look forward to it!"
+      },
+      {
+        "title": " ｜Crossover｜",
+        "subtitle": "verdant vie x ",
+        "text": [
+          "【 2024 Silbermond Fashion Week Cooperation Brand 】",
+          "【 Silbermonder Magazine Cover Story 】",
+          "【 Simon Hotel Check-in Gift Set 】"
+        ]
+      }
+    ]
   }
 ]
