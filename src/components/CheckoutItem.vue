@@ -1,5 +1,8 @@
 <template>
-  <div class="my-3 row w-100 align-items-center text-center position-relative">
+  <div
+    v-if="step == 1"
+    class="my-3 row w-100 align-items-center text-center position-relative"
+  >
     <div
       class="position-absolute top-0 text-end"
       role="button"
@@ -86,14 +89,26 @@
       {{ getItemSubtotal(item.id) }} <span class="d-md-none">€</span>
     </div>
   </div>
-  <hr class="rounded-2 text-info" />
+  <hr v-if="step == 1" class="rounded-2 text-info" />
+  <div v-if="step == 3" class="my-3 row w-100 align-items-center text-center">
+    <!-- product x price x quantity -->
+    <div class="col-12 text-end text-md-start">
+      <div class="w-100 d-flex justify-content-start gap-3">
+        <span class="text-start">{{ product.name }} </span>
+        <div>
+          <span class="card-title lh-xs"> {{ item.quantity }} x </span>
+          <span>{{ product.discount || product.price }} €</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import useProducts from "../composables/useProducts";
 import useShoppingCart from "../composables/useShoppingCart";
 export default {
   name: "CheckoutItem",
-  props: ["item"],
+  props: ["item", "step"],
   setup(props) {
     const { getProductInfo } = useProducts();
     const product = getProductInfo(props.item.id);
