@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center">Home Style</h1>
+  <h1 class="text-center display-5">Home Style</h1>
   <!-- products -->
   <section class="mt-4 row justify-content-evenly">
     <ProductCard

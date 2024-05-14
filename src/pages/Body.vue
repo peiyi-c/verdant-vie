@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center">For Body</h1>
+  <h1 class="text-center display-5">For Body</h1>
   <!-- products -->
   <section class="mt-4 row justify-content-evenly">
     <ProductCard

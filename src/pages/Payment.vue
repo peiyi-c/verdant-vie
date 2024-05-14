@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center">Payment</h1>
+  <h1 class="text-center display-5">Payment</h1>
 
   <section class="container">
     <!-- loading spinner -->

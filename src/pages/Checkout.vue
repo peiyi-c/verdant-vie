@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center">Check out</h1>
+  <h1 class="text-center display-5">Check out</h1>
 
   <div v-if="items?.length > 0" class="section-wrapper">
     <!-- progress -->
