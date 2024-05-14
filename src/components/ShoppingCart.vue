@@ -48,11 +48,11 @@
         >
         <!-- Close shopping cart canvas -->
         <button
-          class="btn btn-outline-primary rounded-1"
+          class="btn btn-outline-primary rounded-1 continue"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         >
-          <span class="lh-sm text-primary">Continue Shopping</span>
+          <span class="lh-sm">Continue Shopping</span>
         </button>
       </div>
     </div>
@@ -76,4 +76,8 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.continue:hover {
+  color: #fff;
+}
+</style>
