@@ -84,27 +84,27 @@
                 id="shipping-des"
                 v-model="shippingDes"
               >
-                <option value="Germany">Germany</option>
-                <option value="France">France</option>
-                <option value="UK">UK</option>
+                <option value="Nebelland">Nebelland</option>
+                <option value="Flance">Flance</option>
+                <option value="USK">USK</option>
               </select>
             </div>
             <div class="my-2">
-              <label for="shipping-des" class="mb-1">Shipping method</label>
+              <label for="shipping-method" class="mb-1">Shipping method</label>
               <select
                 class="form-select"
-                name="shipping-des"
-                id="shipping-des"
-                v-model="shippingVendor"
+                name="shipping-method"
+                id="shipping-method"
+                v-model="shippingMethod"
               >
                 <option
                   value="DHL Post"
-                  v-show="shippingDes == 'Germany' || shippingDes == 'France'"
+                  v-show="shippingDes == 'Nebelland' || shippingDes == 'Flance'"
                 >
                   DHL Post
                 </option>
                 <option value="Ups">UPS</option>
-                <option value="Store" v-show="shippingDes == 'Germany'">
+                <option value="Store" v-show="shippingDes == 'Nebelland'">
                   Pick up at store
                 </option>
               </select>
@@ -174,6 +174,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  :class="{ warning: !orderFirstname.trim() && !checked }"
                   id="order-firstname"
                   aria-describedby="nameHelp"
                   v-model="orderFirstname"
@@ -187,6 +188,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  :class="{ warning: !orderLastname.trim() && !checked }"
                   id="order-lastname"
                   v-model="orderLastname"
                 />
@@ -199,6 +201,8 @@
               <input
                 type="email"
                 class="form-control"
+                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                :class="{ warning: !orderEmail.trim() && !checked }"
                 id="order-email"
                 v-model="orderEmail"
               />
@@ -231,7 +235,11 @@
             <div class="row">
               <span class="form-label">Birthday</span>
               <div class="col-12 col-sm-4 mb-3">
-                <select class="form-select form-select-sm" aria-label="year">
+                <select
+                  id="birth-year"
+                  class="form-select form-select-sm"
+                  aria-label="birth-year"
+                >
                   <option selected>YEAR</option>
                   <option :value="year" v-for="year in birthYears">
                     {{ year }}
@@ -239,15 +247,23 @@
                 </select>
               </div>
               <div class="col-12 col-sm-4 mb-3">
-                <select class="form-select form-select-sm" aria-label="month">
-                  <option selected>MONTH</option>
+                <select
+                  id="birthdy-mon"
+                  class="form-select form-select-sm"
+                  aria-label="birth-month"
+                >
+                  <option selected>MON</option>
                   <option :value="month" v-for="month in months">
                     {{ month }}
                   </option>
                 </select>
               </div>
               <div class="col-12 col-sm-4 mb-3">
-                <select class="form-select form-select-sm" aria-label="day">
+                <select
+                  id="birthdy-day"
+                  class="form-select form-select-sm"
+                  aria-label="birth-day"
+                >
                   <option selected>DAY</option>
                   <option :value="day" v-for="day in birthDays">
                     {{ day }}
@@ -267,19 +283,19 @@
           </div>
           <div class="mb-3">
             <span> Shipping method: </span>
-            <span class="fw-bold text-warning">{{ shippingVendor }}</span
+            <span class="fw-bold text-warning">{{ shippingMethod }}</span
             ><br />
 
-            <span class="lh-sm text-info text-end">{{
-              shippingVendor == "DHL Post"
-                ? " (standard DHL shipping 4-7 workdays)"
-                : shippingVendor == "Ups"
-                ? " (premium UPS service 2-3 workdays)"
-                : " (regular disptacht 3-4 workdays)"
+            <span class="lh-sm text-info text-end fst-italic">{{
+              shippingMethod == "DHL Post"
+                ? " | standard DHL shipping 4-7 workdays | "
+                : shippingMethod == "Ups"
+                ? " | premium UPS service 2-3 workdays | "
+                : " | regular disptach 3-4 workdays | "
             }}</span>
           </div>
 
-          <form v-if="shippingVendor !== 'Store'">
+          <form v-if="shippingMethod !== 'Store'">
             <!-- recipient same as order person -->
             <div class="mb-3 form-check">
               <input
@@ -302,6 +318,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  :class="{ warning: !shippingFirstname.trim() && !checked }"
                   id="recipient-firstname"
                   v-model="shippingFirstname"
                 />
@@ -313,6 +330,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  :class="{ warning: !shippingLastname.trim() && !checked }"
                   id="recipient-lastname"
                   v-model="shippingLastname"
                 />
@@ -329,6 +347,7 @@
                   type="text"
                   class="form-control"
                   id="receiver-street"
+                  :class="{ warning: !shippingSt.trim() && !checked }"
                   v-model="shippingSt"
                 />
               </div>
@@ -338,6 +357,7 @@
                   type="text"
                   class="form-control"
                   id="receiver-city"
+                  :class="{ warning: !shippingCity.trim() && !checked }"
                   v-model="shippingCity"
                 />
               </div>
@@ -373,11 +393,11 @@
             </div>
           </form>
 
-          <div v-if="shippingVendor == 'Store'" class="mb-3">
+          <div v-if="shippingMethod === 'Store'" class="mb-3">
             <p class="lh-base">
-              Verdant Street 17<br />
-              New Silbermond City<br />
-              Nebelland
+              {{ shippingSt }}<br />
+              {{ shippingZip }} {{ shippingCity }}<br />
+              {{ shippingDes }}
             </p>
           </div>
         </div>
@@ -424,73 +444,6 @@
             <div id="invoiceHelp" class="mb-3 form-text">
               Invoice will be issued after all ordered items have been
               delivered.
-            </div>
-          </form>
-          <form v-else>
-            <!-- card information -->
-            <div class="mb-3 row">
-              <div class="col-12 col-xl-6">
-                <label for="card-number" class="form-label">Card number</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="card-number"
-                  inputmode="numeric"
-                  pattern="[0-9 ]+"
-                  autocomplete="cc-number"
-                  maxlength="19"
-                  required
-                />
-              </div>
-              <div class="col-12 col-xl-6">
-                <label for="card-name" class="form-label"
-                  >Card Holder Name</label
-                >
-                <input type="text" class="form-control" id="card-name" />
-              </div>
-            </div>
-            <div class="mb-3 row">
-              <div class="col-3 col-lg-3 pe-0">
-                <label for="card-valid-month" class="form-label"
-                  >Valid Til</label
-                >
-                <select
-                  class="form-select form-select-sm"
-                  aria-label="valid-month"
-                  id="card-valid-month"
-                >
-                  <option selected>MM</option>
-                  <option :value="month" v-for="month in months">
-                    {{ month }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-3 col-lg-3 pe-0">
-                <label
-                  for="card-valid-year"
-                  class="form-label opacity-0 text-nowrap"
-                  >Valid til year</label
-                >
-                <input
-                  type="number"
-                  class="form-control form-control-sm"
-                  id="card-valid-year"
-                  min="24"
-                  max="99"
-                  placeholder="YY"
-                />
-              </div>
-              <div class="col-6 col-lg-3">
-                <label for="card-security" class="form-label">CVV/CVC</label>
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="card-security"
-                  name="card-security"
-                  maxlength="3"
-                  pattern="([0-9]|[0-9]|[0-9])"
-                />
-              </div>
             </div>
           </form>
         </div>
@@ -555,7 +508,7 @@
             <span class="fw-bold">Shipping address</span>
           </div>
 
-          <div v-if="shippingVendor !== 'Store'">
+          <div>
             <ul>
               <li>{{ shippingFirstname }} {{ shippingLastname }}</li>
               <li>
@@ -564,14 +517,6 @@
               </li>
               <li>{{ shippingPhone }}</li>
             </ul>
-          </div>
-
-          <div v-if="shippingVendor == 'Store'" class="mb-3">
-            <p class="lh-base">
-              Verdant Street 17<br />
-              New Silbermond City<br />
-              Nebelland
-            </p>
           </div>
         </div>
         <!-- message -->
@@ -613,7 +558,7 @@
         </div>
         <!-- fees -->
         <div
-          class="container my-4 border border-1 border-info-subtle rounded-2"
+          class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
         >
           <div
             class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
@@ -644,6 +589,87 @@
           </div>
         </div>
       </div>
+
+      <!-- credit cart -->
+      <div
+        v-if="payMethod == 'Credit card'"
+        class="d-flex-column d-md-flex gap-4 align-items-start"
+      >
+        <div
+          class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
+        >
+          <div
+            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+          >
+            <span class="fw-bold">Credit card</span>
+          </div>
+          <form class="row">
+            <div class="col-lg-6 mb-3 row">
+              <div class="col-12 col-xl-6">
+                <label for="card-number" class="form-label">Card number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="card-number"
+                  inputmode="numeric"
+                  pattern="[0-9 ]+"
+                  autocomplete="cc-number"
+                  maxlength="16"
+                  required
+                />
+              </div>
+              <div class="col-12 col-xl-6">
+                <label for="card-name" class="form-label"
+                  >Card Holder Name</label
+                >
+                <input type="text" class="form-control" id="card-name" />
+              </div>
+            </div>
+            <div class="col-lg-6 mb-3 row">
+              <div class="col-3 col-lg-3 pe-0">
+                <label for="card-valid-month" class="form-label"
+                  >Valid Til</label
+                >
+                <select
+                  class="form-select form-select-sm"
+                  aria-label="valid-month"
+                  id="card-valid-month"
+                >
+                  <option selected>MM</option>
+                  <option :value="month" v-for="month in months">
+                    {{ month }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-3 col-lg-3 pe-0">
+                <label
+                  for="card-valid-year"
+                  class="form-label opacity-0 text-nowrap"
+                  >Valid til year</label
+                >
+                <input
+                  type="tel"
+                  maxlength="2"
+                  class="form-control form-control-sm"
+                  id="card-valid-year"
+                  placeholder="YY"
+                />
+              </div>
+              <div class="col-6 col-lg-3">
+                <label for="card-security" class="form-label">CVV/CVC</label>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="card-security"
+                  name="card-security"
+                  maxlength="3"
+                  pattern="([0-9]|[0-9]|[0-9])"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </section>
 
     <div class="container my-3 d-flex w-100 justify-content-end gap-2">
@@ -666,7 +692,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import CheckoutItem from "../components/CheckoutItem.vue";
 import useShoppingCart from "../composables/useShoppingCart";
 
@@ -682,70 +708,21 @@ export default {
     } = useShoppingCart();
 
     // shipping & payment
-    const shippingDes = ref("Germany");
-    const shippingVendor = ref("DHL Post");
+    const shippingDes = ref("Nebelland");
+    const shippingMethod = ref("Store");
     const payMethod = ref("Credit card");
-
-    // stepper
-    const step = ref(1);
-    function nextStep() {
-      if (step.value < 3) {
-        step.value++;
-      } else {
-        return;
-      }
-    }
-    function lastStep() {
-      if (step.value > 1) {
-        step.value--;
-      } else {
-        return;
-      }
-    }
-    // calculate shipping fee
-    function calcShippingFee() {
-      if (shippingDes.value === "Germany") {
-        switch (shippingVendor.value) {
-          case "DHL Post":
-          case "store":
-            return 0.0;
-          case "Ups":
-            return 3.99;
-          default:
-            return 0.0;
-        }
-      } else if (shippingDes.value === "France") {
-        switch (shippingVendor.value) {
-          case "DHL Post":
-            return 1.0;
-          case "Ups":
-            return 4.5;
-          default:
-            return 1.0;
-        }
-      } else {
-        // shippingDes.value === "UK"
-        return 5.5;
-      }
-    }
-
-    // calculate total fee
-    function calcTotal() {
-      const result = +getCartItemsTotal() + +calcShippingFee();
-      return result.toFixed(2);
-    }
 
     // order information
     const orderFirstname = ref("");
     const orderLastname = ref("");
     const orderEmail = ref("");
     const orderPhone = ref("");
-    const orderShippingSame = ref(true);
+    const orderShippingSame = ref(false);
     const shippingFirstname = ref("");
     const shippingLastname = ref("");
-    const shippingSt = ref("");
-    const shippingCity = ref("");
-    const shippingZip = ref("");
+    const shippingSt = ref("Verdant Street 17");
+    const shippingCity = ref("New Silbermond City");
+    const shippingZip = ref(80000);
     const shippingPhone = ref("");
     const message = ref("");
     const birthYears = ref(
@@ -755,14 +732,147 @@ export default {
     );
     const months = ref(
       Array(12)
-        .fill(0)
-        .map((_, i) => i + 1)
+        .fill("0")
+        .map((ele, i) => ele.concat(i + 1).slice(-2))
     );
     const birthDays = ref(
       Array(31)
-        .fill(0)
-        .map((_, i) => i + 1)
+        .fill("0")
+        .map((ele, i) => ele.concat(i + 1).slice(-2))
     );
+
+    // form check
+    const checked = ref(true);
+
+    // stepper
+    const step = ref(1);
+
+    /*  == SECTION 1 == */
+    // default shipping method setter
+    function setShipping(des) {
+      switch (des) {
+        case "Nebelland":
+          shippingMethod.value = "Store";
+          return;
+        case "Flance":
+          shippingMethod.value = "DHL Post";
+          return;
+        case "USK":
+          shippingMethod.value = "Ups";
+          return;
+      }
+    }
+    // watch shipping destination
+    watch(shippingDes, (newDes) => {
+      setShipping(newDes);
+    });
+
+    // calculate shipping fee
+    function calcShippingFee() {
+      if (shippingDes.value === "Nebelland") {
+        switch (shippingMethod.value) {
+          case "DHL Post":
+          case "Store":
+            return 0.0;
+          case "Ups":
+            return 3.99;
+          default:
+            return 0.0;
+        }
+      } else if (shippingDes.value === "Flance") {
+        switch (shippingMethod.value) {
+          case "DHL Post":
+            return 1.0;
+          case "Ups":
+            return 4.5;
+          default:
+            return 1.0;
+        }
+      } else if (shippingDes.value === "USK") {
+        return 5.5;
+      } else {
+        return 0;
+      }
+    }
+
+    // calculate total fee
+    function calcTotal() {
+      const result = +getCartItemsTotal() + +calcShippingFee();
+      return result.toFixed(2);
+    }
+
+    /*  == SECTION 2 == */
+    // watch recipient name same as order person name
+    watch(orderShippingSame, () => {
+      if (orderShippingSame.value) {
+        shippingFirstname.value = orderFirstname.value;
+        shippingLastname.value = orderLastname.value;
+      }
+    });
+    // set address and repient name if sent to store
+    watch(
+      shippingMethod,
+      (newMethod) => {
+        if (newMethod === "Store") {
+          shippingSt.value = "Verdant Street 17";
+          shippingCity.value = "New Silbermond City";
+        } else {
+          shippingSt.value = "";
+          shippingCity.value = "";
+        }
+      },
+      { deep: true }
+    );
+
+    watch(orderFirstname, () => {
+      if (shippingMethod.value === "Store") {
+        shippingFirstname.value = orderFirstname.value;
+      }
+    });
+    watch(orderLastname, () => {
+      if (shippingMethod.value === "Store") {
+        shippingLastname.value = orderLastname.value;
+      }
+    });
+
+    // check required fields
+    function checkInfoFields() {
+      if (
+        !orderFirstname.value.trim() ||
+        !orderLastname.value.trim() ||
+        !orderEmail.value.trim() ||
+        !shippingFirstname.value.trim() ||
+        !shippingLastname.value.trim() ||
+        !shippingSt.value.trim() ||
+        !shippingCity.value.trim()
+      ) {
+        checked.value = false;
+        return false;
+      } else {
+        checked.value = true;
+        return true;
+      }
+    }
+    /*  == STEPPER CONTROL == */
+    function nextStep() {
+      if (step.value === 1) {
+        step.value++;
+      } else if (step.value === 2) {
+        if (checkInfoFields()) {
+          step.value++;
+        }
+      } else {
+        return;
+      }
+    }
+
+    function lastStep() {
+      if (step.value > 1) {
+        step.value--;
+      } else {
+        return;
+      }
+    }
 
     return {
       items,
@@ -771,7 +881,7 @@ export default {
       step,
       nextStep,
       lastStep,
-      shippingVendor,
+      shippingMethod,
       shippingDes,
       payMethod,
       calcShippingFee,
@@ -791,14 +901,20 @@ export default {
       shippingZip,
       shippingPhone,
       message,
+      checkInfoFields,
+      checked,
     };
   },
 };
 </script>
 
-<style>
+<style scoped>
 ul {
   padding-left: 0;
   list-style: none;
+}
+.warning {
+  border-width: 2px;
+  border-color: var(--danger);
 }
 </style>
