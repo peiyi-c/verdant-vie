@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <main class="container h-100 mt-10">
+  <main class="container-lg h-100 mt-10">
     <router-view> </router-view>
   </main>
   <Footer />
