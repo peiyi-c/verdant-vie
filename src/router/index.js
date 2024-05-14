@@ -44,9 +44,9 @@ const routes = [
     component: () => import("../pages/Payment.vue"),
   },
   {
-    path: "/test",
-    name: "test",
-    component: () => import("../pages/ThemingKit.vue"),
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: () => import("../pages/NotFound.vue"),
   },
 ];
 
