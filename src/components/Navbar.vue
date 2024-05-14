@@ -7,8 +7,12 @@
       <router-link class="nav-link" to="/">
         <img src="/logo.svg" alt="logo vie" class="w-75 show" />
       </router-link>
-      <div class="d-flex d-lg-none w-50 gap-2 justify-content-end">
-        <!-- navbar: icon for mobile -->
+
+      <!-- shopping bag -->
+      <ShoppingBag />
+
+      <!-- navbar: icon for mobile -->
+      <div class="d-flex w-50 d-lg-none gap-2 justify-content-end">
         <button
           class="btn btn-sm navbar-toggler border-0"
           type="button"
@@ -35,7 +39,7 @@
         </button>
       </div>
 
-      <!-- navbar -->
+      <!-- navbar items -->
       <div class="collapse navbar-collapse fs-6" id="navbarItems">
         <ul
           class="navbar-nav my-5 my-md-0 ms-lg-5 me-auto mb-2 mb-lg-0 pt-3 pt-lg-0 text-center d-flex gap-5"
@@ -48,8 +52,6 @@
             />
           </li>
         </ul>
-        <!-- shopping bag -->
-        <ShoppingBag />
       </div>
     </div>
   </nav>
