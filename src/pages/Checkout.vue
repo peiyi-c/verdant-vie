@@ -423,22 +423,45 @@
             <div class="mb-3 row">
               <div class="col-12 col-lg-7">
                 <label for="payer-street" class="form-label">Street, No.</label>
-                <input type="text" class="form-control" id="payer-street" />
+                <input
+                  type="text"
+                  class="form-control"
+                  :class="{ warning: !orderFirstname.trim() && !checked }"
+                  id="payer-street"
+                  v-model="payerStr"
+                />
               </div>
               <div class="col-12 col-lg-5">
                 <label for="payer-city" class="form-label">City</label>
-                <input type="text" class="form-control" id="payer-city" />
+                <input
+                  type="text"
+                  class="form-control"
+                  :class="{ warning: !orderFirstname.trim() && !checked }"
+                  id="payer-city"
+                  v-model="payerCity"
+                />
               </div>
             </div>
 
             <div class="mb-3 row">
               <div class="col-6 col-lg-5">
                 <label for="payer-zip" class="form-label">ZIP code</label>
-                <input type="number" class="form-control" id="payer-zip" />
+                <input
+                  type="number"
+                  class="form-control"
+                  id="payer-zip"
+                  v-model="payerZip"
+                />
               </div>
               <div class="col-6 col-lg-5">
                 <label for="payer-country" class="form-label">Country</label>
-                <input type="text" class="form-control" id="payer-country" />
+                <input
+                  type="text"
+                  class="form-control"
+                  :class="{ warning: !orderFirstname.trim() && !checked }"
+                  id="payer-country"
+                  v-model="payerCountry"
+                />
               </div>
             </div>
             <div id="invoiceHelp" class="mb-3 form-text">
@@ -590,7 +613,7 @@
         </div>
       </div>
 
-      <!-- credit cart -->
+      <!-- pay with credit card -->
       <div
         v-if="payMethod == 'Credit card'"
         class="d-flex-column d-md-flex gap-4 align-items-start"
@@ -610,19 +633,26 @@
                 <input
                   type="tel"
                   class="form-control"
+                  :class="{ warning: !cardNum.trim() && !checked }"
                   id="card-number"
                   inputmode="numeric"
                   pattern="[0-9 ]+"
                   autocomplete="cc-number"
                   maxlength="16"
-                  required
+                  v-model="cardNum"
                 />
               </div>
               <div class="col-12 col-xl-6">
                 <label for="card-name" class="form-label"
                   >Card Holder Name</label
                 >
-                <input type="text" class="form-control" id="card-name" />
+                <input
+                  type="text"
+                  class="form-control"
+                  :class="{ warning: !cardName.trim() && !checked }"
+                  id="card-name"
+                  v-model="cardName"
+                />
               </div>
             </div>
             <div class="col-lg-6 mb-3 row">
@@ -632,8 +662,10 @@
                 >
                 <select
                   class="form-select form-select-sm"
+                  :class="{ warning: !cardMon.trim() && !checked }"
                   aria-label="valid-month"
                   id="card-valid-month"
+                  v-model="cardMon"
                 >
                   <option selected>MM</option>
                   <option :value="month" v-for="month in months">
@@ -651,8 +683,10 @@
                   type="tel"
                   maxlength="2"
                   class="form-control form-control-sm"
+                  :class="{ warning: !cardYear.trim() && !checked }"
                   id="card-valid-year"
                   placeholder="YY"
+                  v-model="cardYear"
                 />
               </div>
               <div class="col-6 col-lg-3">
@@ -660,14 +694,37 @@
                 <input
                   type="text"
                   class="form-control form-control-sm"
+                  :class="{ warning: !cardCvv.trim() && !checked }"
                   id="card-security"
                   name="card-security"
                   maxlength="3"
                   pattern="([0-9]|[0-9]|[0-9])"
+                  v-model="cardCvv"
                 />
               </div>
             </div>
           </form>
+        </div>
+      </div>
+      <!-- pay with invoice -->
+      <div
+        v-if="payMethod == 'Invoice'"
+        class="w-50 d-flex-column d-md-flex gap-4 align-items-start"
+      >
+        <div
+          class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
+        >
+          <div
+            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+          >
+            <span class="fw-bold">Invoice to</span>
+          </div>
+          <ul class="mb-3">
+            <li>{{ orderFirstname }} {{ orderLastname }}</li>
+            <li>{{ payerStr }}</li>
+            <li>{{ payerZip }} {{ payerCity }}</li>
+            <li>{{ payerCountry }}</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -686,6 +743,7 @@
       </button>
     </div>
   </div>
+  <!-- if cart if empty -->
   <h3 v-else class="fs-4 my-6 text-center text-secondary">
     Your shopping cart is empty.
   </h3>
@@ -695,11 +753,13 @@
 import { ref, watch } from "vue";
 import CheckoutItem from "../components/CheckoutItem.vue";
 import useShoppingCart from "../composables/useShoppingCart";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Checkout",
   components: { CheckoutItem },
   setup() {
+    const router = useRouter();
     // cart items info
     const {
       currentItems: items,
@@ -724,6 +784,10 @@ export default {
     const shippingCity = ref("New Silbermond City");
     const shippingZip = ref(80000);
     const shippingPhone = ref("");
+    const payerStr = ref("");
+    const payerCity = ref("");
+    const payerZip = ref("");
+    const payerCountry = ref("");
     const message = ref("");
     const birthYears = ref(
       Array(80)
@@ -740,6 +804,13 @@ export default {
         .fill("0")
         .map((ele, i) => ele.concat(i + 1).slice(-2))
     );
+
+    // credit card
+    const cardNum = ref("");
+    const cardName = ref("");
+    const cardMon = ref("");
+    const cardYear = ref("");
+    const cardCvv = ref("");
 
     // form check
     const checked = ref(true);
@@ -802,14 +873,14 @@ export default {
     }
 
     /*  == SECTION 2 == */
-    // watch recipient name same as order person name
+    // when recipient name same as order person name
     watch(orderShippingSame, () => {
       if (orderShippingSame.value) {
         shippingFirstname.value = orderFirstname.value;
         shippingLastname.value = orderLastname.value;
       }
     });
-    // set address and repient name if sent to store
+    // when sent to store
     watch(
       shippingMethod,
       (newMethod) => {
@@ -824,6 +895,7 @@ export default {
       { deep: true }
     );
 
+    // when order names change
     watch(orderFirstname, () => {
       if (shippingMethod.value === "Store") {
         shippingFirstname.value = orderFirstname.value;
@@ -849,10 +921,44 @@ export default {
         checked.value = false;
         return false;
       } else {
+        if (payMethod.value === "Invoice") {
+          if (
+            !payerStr.value.trim() ||
+            !payerCity.value.trim() ||
+            !payerCountry.value.trim()
+          ) {
+            checked.value = false;
+            return false;
+          }
+        }
         checked.value = true;
         return true;
       }
     }
+
+    /*  == SECTION 3 == */
+    // check required fields
+    function checkCreditCard() {
+      // if does not pay with credit card
+      if (payMethod !== "Credit card") {
+        checked.value = true;
+        return true;
+      }
+      if (
+        !cardNum.value.trim() ||
+        !cardName.value.trim() ||
+        !cardMon.value.trim() ||
+        !cardYear.value.trim() ||
+        !cardCvv.value.trim()
+      ) {
+        checked.value = false;
+        return false;
+      } else {
+        checked.value = true;
+        return true;
+      }
+    }
+
     /*  == STEPPER CONTROL == */
     function nextStep() {
       if (step.value === 1) {
@@ -860,6 +966,10 @@ export default {
       } else if (step.value === 2) {
         if (checkInfoFields()) {
           step.value++;
+        }
+      } else if (step.value === 3) {
+        if (checkCreditCard()) {
+          router.push({ name: "payment" });
         }
       } else {
         return;
@@ -900,6 +1010,15 @@ export default {
       shippingCity,
       shippingZip,
       shippingPhone,
+      payerStr,
+      payerCity,
+      payerZip,
+      payerCountry,
+      cardNum,
+      cardName,
+      cardMon,
+      cardYear,
+      cardCvv,
       message,
       checkInfoFields,
       checked,
