@@ -921,7 +921,9 @@ export default {
         checked.value = false;
         return false;
       } else {
+        // if required fields all filled
         if (payMethod.value === "Invoice") {
+          // - pay with invoice
           if (
             !payerStr.value.trim() ||
             !payerCity.value.trim() ||
@@ -929,10 +931,15 @@ export default {
           ) {
             checked.value = false;
             return false;
+          } else {
+            checked.value = true;
+            return true;
           }
+        } else {
+          // - does not pay with invoice
+          checked.value = true;
+          return true;
         }
-        checked.value = true;
-        return true;
       }
     }
 
@@ -940,10 +947,12 @@ export default {
     // check required fields
     function checkCreditCard() {
       // if does not pay with credit card
-      if (payMethod === "Store") {
+      if (payMethod.value === "Invoice") {
         checked.value = true;
         return true;
-      } else {
+      }
+      // if pay with credit card
+      if (payMethod.value === "Credit card") {
         if (
           !cardNum.value.trim() ||
           !cardName.value.trim() ||
