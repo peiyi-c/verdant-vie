@@ -426,7 +426,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  :class="{ warning: !orderFirstname.trim() && !checked }"
+                  :class="{ warning: !payerStr.trim() && !checked }"
                   id="payer-street"
                   v-model="payerStr"
                 />
@@ -436,7 +436,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  :class="{ warning: !orderFirstname.trim() && !checked }"
+                  :class="{ warning: !payerCity.trim() && !checked }"
                   id="payer-city"
                   v-model="payerCity"
                 />
@@ -458,7 +458,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  :class="{ warning: !orderFirstname.trim() && !checked }"
+                  :class="{ warning: !payerCountry.trim() && !checked }"
                   id="payer-country"
                   v-model="payerCountry"
                 />
@@ -940,22 +940,23 @@ export default {
     // check required fields
     function checkCreditCard() {
       // if does not pay with credit card
-      if (payMethod !== "Credit card") {
+      if (payMethod === "Store") {
         checked.value = true;
         return true;
-      }
-      if (
-        !cardNum.value.trim() ||
-        !cardName.value.trim() ||
-        !cardMon.value.trim() ||
-        !cardYear.value.trim() ||
-        !cardCvv.value.trim()
-      ) {
-        checked.value = false;
-        return false;
       } else {
-        checked.value = true;
-        return true;
+        if (
+          !cardNum.value.trim() ||
+          !cardName.value.trim() ||
+          !cardMon.value.trim() ||
+          !cardYear.value.trim() ||
+          !cardCvv.value.trim()
+        ) {
+          checked.value = false;
+          return false;
+        } else {
+          checked.value = true;
+          return true;
+        }
       }
     }
 
@@ -969,11 +970,10 @@ export default {
         }
       } else if (step.value === 3) {
         if (checkCreditCard()) {
-          router.push({ name: "payment" });
+          router.push({ name: "thank-you" });
         }
-      } else {
-        return;
       }
+      window.scrollTo(0, 0);
     }
 
     function lastStep() {
