@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center display-5">Payment</h1>
 
-  <section class="container">
+  <section class="container pt-5">
     <!-- loading spinner -->
     <div
       v-if="loading"
@@ -46,6 +46,9 @@ export default {
 
     let timeout = "";
     onMounted(() => {
+      // scroll to top
+      window.scrollTo(0, 0);
+      // wait 2 sec, then show content
       timeout = setTimeout(() => {
         loading.value = false;
       }, 2000);

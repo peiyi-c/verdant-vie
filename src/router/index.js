@@ -39,9 +39,9 @@ const routes = [
     component: () => import("../pages/Checkout.vue"),
   },
   {
-    path: "/payment",
-    name: "payment",
-    component: () => import("../pages/Payment.vue"),
+    path: "/thank-you",
+    name: "thank-you",
+    component: () => import("../pages/Thankyou.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
