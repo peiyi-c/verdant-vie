@@ -739,8 +739,11 @@
       </button>
       <button class="btn btn-primary text-success" @click="nextStep">
         <span v-if="step < 3">Continue</span>
-        <span v-if="step == 3" class="fw-bold">Order</span>
+        <span v-if="step == 3" class="fw-bold">Go To Order</span>
       </button>
+    </div>
+    <div v-if="step == 3" class="container text-end text-muted fst-italic">
+      You won't be charge yet.
     </div>
   </div>
   <!-- if cart if empty -->
