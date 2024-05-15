@@ -27,18 +27,21 @@
       </div>
       <div class="row text-center text-secondary-emphasis">
         <span class="col-4" :class="step >= 1 ? 'text-info' : 'text-secondary'"
-          >1. CART ITEMS</span
+          ><span class="d-sm-none d-lg-inline">STEP</span> 1.
+          <span class="d-none d-sm-inline"> CART ITEMS</span></span
         >
-        <span class="col-4" :class="step >= 2 ? 'text-info' : 'text-secondary'"
-          >2. INFORMATION</span
+        <span class="col-4" :class="step >= 2 ? 'text-info' : 'text-secondary'">
+          <span class="d-sm-none d-lg-inline">STEP</span> 2.
+          <span class="d-none d-sm-inline">INFORMATION</span></span
         >
-        <span class="col-4" :class="step == 3 ? 'text-info' : 'text-secondary'"
-          >3. CONFIRM</span
+        <span class="col-4" :class="step == 3 ? 'text-info' : 'text-secondary'">
+          <span class="d-sm-none d-lg-inline">STEP</span> 3.
+          <span class="d-none d-sm-inline">CONFIRM</span></span
         >
       </div>
     </section>
     <!-- section 1: cart items & shipping options -->
-    <section class="container mt-5" :class="step == 1 ? 'd-block' : 'd-none'">
+    <section class="container" :class="step == 1 ? 'd-block' : 'd-none'">
       <h2 class="my-4 fs-3">
         Shopping Cart ({{ items.length }}
         {{ items.length > 1 ? "items" : "item" }})
@@ -153,7 +156,7 @@
     </section>
 
     <!-- section 2: information forms -->
-    <section class="container mt-5" :class="step == 2 ? 'd-block' : 'd-none'">
+    <section class="container" :class="step == 2 ? 'd-block' : 'd-none'">
       <h2 class="my-4 fs-3">Please fill out</h2>
       <div class="d-flex-column d-md-flex gap-4 align-items-start">
         <div
@@ -501,234 +504,250 @@
     </section>
 
     <!-- section 3: confirm -->
-    <section class="container mt-5" :class="step == 3 ? 'd-block' : 'd-none'">
+    <section class="container" :class="step == 3 ? 'd-block' : 'd-none'">
       <h2 class="my-4 fs-3">Order overview</h2>
-      <div class="d-flex-column d-md-flex gap-4 align-items-start">
-        <!-- customer -->
+      <div class="row">
+        <!-- customer &  shipping-->
         <div
-          class="container my-4 border border-1 border-info-subtle rounded-2"
+          class="col-12 col-lg-6 d-flex-column d-md-flex gap-4 align-items-start"
         >
+          <!-- customer -->
           <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            class="container my-4 border border-1 border-info-subtle rounded-2"
           >
-            <span class="fw-bold">Order person</span>
+            <div
+              class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            >
+              <span class="fw-bold">Order person</span>
+            </div>
+            <div>
+              <ul>
+                <li>{{ orderFirstname }} {{ orderLastname }}</li>
+                <li>{{ orderEmail }}</li>
+                <li>{{ orderPhone }}</li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <ul>
-              <li>{{ orderFirstname }} {{ orderLastname }}</li>
-              <li>{{ orderEmail }}</li>
-              <li>{{ orderPhone }}</li>
-            </ul>
-          </div>
-        </div>
-        <!-- shipping -->
-        <div
-          class="container my-4 border border-1 border-info-subtle rounded-2"
-        >
+          <!-- shipping -->
           <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            class="container my-4 border border-1 border-info-subtle rounded-2"
           >
-            <span class="fw-bold">Shipping address</span>
-          </div>
+            <div
+              class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            >
+              <span class="fw-bold">Shipping address</span>
+            </div>
 
-          <div>
-            <ul>
-              <li>{{ shippingFirstname }} {{ shippingLastname }}</li>
-              <li>
-                {{ shippingSt }} <br />
-                {{ shippingZip }}, {{ shippingCity }} <br />{{ shippingDes }}
-              </li>
-              <li>{{ shippingPhone }}</li>
-            </ul>
-          </div>
-        </div>
-        <!-- message -->
-        <div
-          v-show="message"
-          class="container my-4 border border-1 border-info-subtle rounded-2"
-        >
-          <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
-          >
-            <span class="fw-bold">Note</span>
-          </div>
-
-          <!-- card information -->
-          <div class="mb-3">
-            <div class="">
-              <span>Your message:</span>
-              {{ message }}
+            <div>
+              <ul>
+                <li>{{ shippingFirstname }} {{ shippingLastname }}</li>
+                <li>
+                  {{ shippingSt }} <br />
+                  {{ shippingZip }}, {{ shippingCity }} <br />{{ shippingDes }}
+                </li>
+                <li>{{ shippingPhone }}</li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-      <div class="d-flex-column d-md-flex gap-4 align-items-start">
-        <!-- order items -->
+        <!-- order items & fees -->
         <div
-          class="container my-4 border border-1 border-info-subtle rounded-2"
+          class="col-12 col-lg-6 d-flex-column d-md-flex gap-4 align-items-start"
         >
+          <!-- order items -->
           <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            class="container my-4 border border-1 border-info-subtle rounded-2"
           >
-            <span class="fw-bold">Order items</span>
+            <div
+              class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            >
+              <span class="fw-bold">Order items</span>
+            </div>
+            <CheckoutItem
+              v-for="item in items"
+              :key="item.id"
+              :item="item"
+              :step="step"
+            />
           </div>
-          <CheckoutItem
-            v-for="item in items"
-            :key="item.id"
-            :item="item"
-            :step="step"
-          />
-        </div>
-        <!-- fees -->
-        <div
-          class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
-        >
+          <!-- fees -->
           <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
           >
-            <span class="fw-bold">Fees</span>
-          </div>
+            <div
+              class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+            >
+              <span class="fw-bold">Fees</span>
+            </div>
 
-          <div class="d-flex justify-content-start gap-3">
-            <span>Order Items Total</span>
-            <span class="text-end">{{ getCartItemsTotal() }} €</span>
-          </div>
-          <div>
             <div class="d-flex justify-content-start gap-3">
-              <span>Shipping Fee</span>
-              <span
-                >{{ calcShippingFee() > 0 ? calcShippingFee() : "free" }}
-                {{ calcShippingFee() > 0 ? "€" : "" }}</span
+              <span>Order Items Total</span>
+              <span class="text-end">{{ getCartItemsTotal() }} €</span>
+            </div>
+            <div>
+              <div class="d-flex justify-content-start gap-3">
+                <span>Shipping Fee</span>
+                <span
+                  >{{ calcShippingFee() > 0 ? calcShippingFee() : "free" }}
+                  {{ calcShippingFee() > 0 ? "€" : "" }}</span
+                >
+              </div>
+            </div>
+            <hr />
+
+            <div
+              class="d-flex justify-content-end gap-3 mb-3 fw-bolder text-primary-emphasis"
+            >
+              <span>Total</span>
+              <span>{{ calcTotal() }} €</span>
+            </div>
+          </div>
+        </div>
+        <!-- message & payment  -->
+        <div
+          class="col-12 col-lg-10 d-flex-column d-md-flex gap-4 align-items-start"
+        >
+          <!-- your message -->
+          <div
+            v-if="message"
+            class="d-flex-column d-md-flex gap-4 align-items-start w-75"
+          >
+            <div
+              class="container my-4 border border-1 border-info-subtle rounded-2"
+            >
+              <div
+                class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
               >
-            </div>
-          </div>
-          <hr />
-
-          <div
-            class="d-flex justify-content-end gap-3 mb-3 fw-bolder text-primary-emphasis"
-          >
-            <span>Total</span>
-            <span>{{ calcTotal() }} €</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- pay with credit card -->
-      <div
-        v-if="payMethod == 'Credit card'"
-        class="d-flex-column d-md-flex gap-4 align-items-start"
-      >
-        <div
-          class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
-        >
-          <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
-          >
-            <span class="fw-bold">Credit card</span>
-          </div>
-          <form class="row">
-            <div class="col-lg-6 mb-3 row">
-              <div class="col-12 col-xl-6">
-                <label for="card-number" class="form-label">Card number</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  :class="{ warning: !cardNum.trim() && !checked }"
-                  id="card-number"
-                  inputmode="numeric"
-                  pattern="[0-9 ]+"
-                  autocomplete="cc-number"
-                  maxlength="16"
-                  v-model="cardNum"
-                />
+                <span class="fw-bold">Your message</span>
               </div>
-              <div class="col-12 col-xl-6">
-                <label for="card-name" class="form-label"
-                  >Card Holder Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  :class="{ warning: !cardName.trim() && !checked }"
-                  id="card-name"
-                  v-model="cardName"
-                />
+              <div class="mb-3">
+                <p class="text-center fst-italic">" {{ message }} "</p>
               </div>
             </div>
-            <div class="col-lg-6 mb-3 row">
-              <div class="col-3 col-lg-3 pe-0">
-                <label for="card-valid-month" class="form-label"
-                  >Valid Til</label
-                >
-                <select
-                  class="form-select form-select-sm"
-                  :class="{ warning: !cardMon.trim() && !checked }"
-                  aria-label="valid-month"
-                  id="card-valid-month"
-                  v-model="cardMon"
-                >
-                  <option selected>MM</option>
-                  <option :value="month" v-for="month in months">
-                    {{ month }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-3 col-lg-3 pe-0">
-                <label
-                  for="card-valid-year"
-                  class="form-label opacity-0 text-nowrap"
-                  >Valid til year</label
-                >
-                <input
-                  type="tel"
-                  maxlength="2"
-                  class="form-control form-control-sm"
-                  :class="{ warning: !cardYear.trim() && !checked }"
-                  id="card-valid-year"
-                  placeholder="YY"
-                  v-model="cardYear"
-                />
-              </div>
-              <div class="col-6 col-lg-3">
-                <label for="card-security" class="form-label">CVV/CVC</label>
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  :class="{ warning: !cardCvv.trim() && !checked }"
-                  id="card-security"
-                  name="card-security"
-                  maxlength="3"
-                  pattern="([0-9]|[0-9]|[0-9])"
-                  v-model="cardCvv"
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- pay with invoice -->
-      <div
-        v-if="payMethod == 'Invoice'"
-        class="w-50 d-flex-column d-md-flex gap-4 align-items-start"
-      >
-        <div
-          class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
-        >
-          <div
-            class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
-          >
-            <span class="fw-bold">Invoice to</span>
           </div>
-          <ul class="mb-3">
-            <li>{{ orderFirstname }} {{ orderLastname }}</li>
-            <li>{{ payerStr }}</li>
-            <li>{{ payerZip }} {{ payerCity }}</li>
-            <li>{{ payerCountry }}</li>
-          </ul>
+          <!-- pay with credit card -->
+          <div
+            v-if="payMethod == 'Credit card'"
+            class="d-flex-column d-md-flex gap-4 align-items-start w-75"
+          >
+            <div
+              class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
+            >
+              <div
+                class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+              >
+                <span class="fw-bold">Credit card</span>
+              </div>
+              <form>
+                <div class="mb-3 row">
+                  <div class="col-12 col-xl-6">
+                    <label for="card-number" class="form-label"
+                      >Card number</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-control"
+                      :class="{ warning: !cardNum.trim() && !checked }"
+                      id="card-number"
+                      inputmode="numeric"
+                      pattern="[0-9 ]+"
+                      autocomplete="cc-number"
+                      maxlength="16"
+                      v-model="cardNum"
+                    />
+                  </div>
+                  <div class="col-12 col-xl-6">
+                    <label for="card-name" class="form-label"
+                      >Card Holder Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      :class="{ warning: !cardName.trim() && !checked }"
+                      id="card-name"
+                      v-model="cardName"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <div class="col-3 col-lg-3 pe-0">
+                    <label for="card-valid-month" class="form-label"
+                      >Valid Til</label
+                    >
+                    <select
+                      class="form-select form-select-sm"
+                      :class="{ warning: !cardMon.trim() && !checked }"
+                      aria-label="valid-month"
+                      id="card-valid-month"
+                      v-model="cardMon"
+                    >
+                      <option selected>MM</option>
+                      <option :value="month" v-for="month in months">
+                        {{ month }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-3 col-lg-3 pe-0">
+                    <label
+                      for="card-valid-year"
+                      class="form-label opacity-0 text-nowrap"
+                      >Valid til year</label
+                    >
+                    <input
+                      type="tel"
+                      maxlength="2"
+                      class="form-control form-control-sm"
+                      :class="{ warning: !cardYear.trim() && !checked }"
+                      id="card-valid-year"
+                      placeholder="YY"
+                      v-model="cardYear"
+                    />
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <label for="card-security" class="form-label"
+                      >CVV/CVC</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      :class="{ warning: !cardCvv.trim() && !checked }"
+                      id="card-security"
+                      name="card-security"
+                      maxlength="3"
+                      pattern="([0-9]|[0-9]|[0-9])"
+                      v-model="cardCvv"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- pay with invoice -->
+          <div
+            v-if="payMethod == 'Invoice'"
+            class="d-flex-column d-md-flex gap-4 align-items-start w-50"
+          >
+            <div
+              class="container my-4 border border-1 border-info-subtle rounded-2 bg-body-tertiary"
+            >
+              <div
+                class="table-header py-2 mb-3 row text-center text-info bg-body-tertiary rounded-2 border-bottom border-info-subtle rounded-2"
+              >
+                <span class="fw-bold">Invoice to</span>
+              </div>
+              <ul class="mb-3">
+                <li>{{ orderFirstname }} {{ orderLastname }}</li>
+                <li>{{ payerStr }}</li>
+                <li>{{ payerZip }} {{ payerCity }}</li>
+                <li>{{ payerCountry }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- buttons -->
     <div class="container my-3 d-flex w-100 justify-content-end gap-2">
       <button
         class="btn btn-outline-primary z-2"
@@ -743,7 +762,7 @@
       </button>
     </div>
     <div v-if="step == 3" class="container text-end text-muted fst-italic">
-      You won't be charge yet.
+      You won't be charge yet by clicking this button.
     </div>
   </div>
   <!-- if cart if empty -->
