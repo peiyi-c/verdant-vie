@@ -8,7 +8,7 @@
   >
     <!-- image -->
     <div
-      class="card-img-wrapper w-100 position-relative bg-secondary rounded-1"
+      class="card-img-wrapper w-100 position-relative bg-secondary-subtle rounded-1"
     >
       <img
         :class="imgLoaded ? 'show' : ''"
@@ -97,7 +97,8 @@ export default {
   // image
   &-img-wrapper {
     height: rem(140);
-    background: #ececec67;
+    background: var(--secondary);
+
     &:hover {
       .card-img-top {
         opacity: 0.5;

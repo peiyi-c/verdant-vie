@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center display-5">Home Style</h1>
   <!-- products -->
-  <section class="mt-4 row justify-content-evenly">
+  <section class="my-5 mt-4 row justify-content-evenly">
     <ProductCard
       v-for="item in items"
       :key="item.id"
@@ -10,7 +10,7 @@
     />
   </section>
   <!-- hero -->
-  <section class="position-relative">
+  <section class="my-5 position-relative">
     <!-- https://www.pexels.com/photo/a-green-plants-on-brown-pots-9707239/ -->
     <img
       :class="imgLoaded ? 'show' : ''"
@@ -23,7 +23,7 @@
     <div
       class="w-100 position-absolute top-0 pb-3 text-dark text-center d-none d-md-block"
     >
-      <h2 class="heading opacity-75 text-dark pt-3" v-show="imgLoaded">
+      <h2 class="heading opacity-75 text-dark pt-5" v-show="imgLoaded">
         At Home. Be You.
       </h2>
     </div>

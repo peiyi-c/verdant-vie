@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center display-5">Accessory</h1>
   <!-- products -->
-  <section class="mt-4 row justify-content-evenly">
+  <section class="my-5 row justify-content-evenly">
     <ProductCard
       v-for="item in items"
       :key="item.id"
@@ -9,7 +9,7 @@
       @set-item="(item) => (modalItem = item)"
     />
 
-    <h3 class="fs-3 mt-5 text-center text-secondary">
+    <h3 class="my-5 fs-3 mt-5 text-center text-secondary">
       More accessories coming soon.
     </h3>
   </section>

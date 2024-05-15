@@ -1,9 +1,9 @@
 <template>
   <footer
-    class="mt-4 row justify-content-center border border-1 border-red bg-light-subtle"
+    class="mt-4 px-4 row justify-content-center border border-1 border-red bg-light-subtle"
   >
-    <div class="container">
-      <div class="mx-2 px-5 py-3 row">
+    <div class="container px-5">
+      <div class="mx-2 px-2 px-md-4 px-lg-5 py-3 row">
         <div class="col-12 col-sm-6 col-md-3">
           <p class="fw-bold">INFO</p>
           <ul class="lh-lg">
@@ -112,6 +112,7 @@ footer {
     li {
       transition: color 0.25s linear;
       &:hover {
+        font-weight: 700;
         color: var(--warning);
       }
     }
@@ -122,6 +123,7 @@ footer {
     height: auto;
   }
 }
+
 #offcanvasFooter {
   height: 70svh;
   @include breakpoint-up(medium) {

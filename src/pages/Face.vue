@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center display-5">For Face</h1>
   <!-- products -->
-  <section class="mt-4 row justify-content-evenly">
+  <section class="my-5 row justify-content-evenly">
     <ProductCard
       v-for="item in items"
       :key="item.id"
@@ -10,7 +10,7 @@
     />
   </section>
   <!-- hero -->
-  <section class="position-relative">
+  <section class="my-5 position-relative">
     <!-- https://www.pexels.com/photo/calm-woman-with-face-cream-5069395/ -->
     <img
       :class="imgLoaded ? 'show' : ''"

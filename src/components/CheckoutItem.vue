@@ -1,4 +1,5 @@
 <template>
+  <!-- remove item button -->
   <div
     v-if="step == 1"
     class="my-3 row w-100 align-items-center text-center position-relative"
@@ -33,7 +34,7 @@
       <h5 class="fs-5 text-start">{{ product.name }}</h5>
     </div>
     <!-- price -->
-    <div class="col-12 col-md-2 text-end text-md-start">
+    <div class="col-12 col-md-2 text-end text-md-center">
       <span
         :class="{
           strick: product.discount !== null,
@@ -45,7 +46,7 @@
       <span class="d-md-none"> €</span>
     </div>
     <!-- quantity -->
-    <div class="col-6 col-md-3 text-start text-md-end fs-sm">
+    <div class="col-6 col-md-3 text-start text-md-center fs-sm">
       <div class="btn-group" role="group" aria-label="button-group">
         <div class="d-flex gap-3 border-0 align-items-center">
           <button

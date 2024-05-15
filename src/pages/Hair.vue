@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center display-5">For Hair</h1>
   <!-- products -->
-  <section class="mt-4 row justify-content-evenly">
+  <section class="my-5 row justify-content-evenly">
     <ProductCard
       v-for="item in items"
       :key="item.id"
@@ -12,7 +12,7 @@
   <!-- carousel -->
   <div
     id="carousel-hair"
-    class="carousel carousel-fade slide opacity-90 w-90 mx-auto"
+    class="my-5 carousel carousel-fade slide opacity-90 w-90 mx-auto"
   >
     <div class="carousel-indicators">
       <button
