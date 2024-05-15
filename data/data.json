@@ -146,6 +146,16 @@
         "type": "For all hair type",
         "price": 39.99,
         "discount": null
+      },
+      {
+        "id": "hair3",
+        "inStock": 40,
+        "listedOn": "07/7/2024",
+        "image": "images/hair/hair-p-3.jpeg",
+        "name": "Hair Milk Conditioner",
+        "type": "For all hair type",
+        "price": 28,
+        "discount": null
       }
     ],
     "homestyle": [
@@ -167,6 +177,16 @@
         "name": "Pillow",
         "type": "For your bed",
         "price": 105,
+        "discount": null
+      },
+      {
+        "id": "homestyle3",
+        "inStock": 500,
+        "listedOn": "05/01/2021",
+        "image": "images/home-style/home-p-3.jpeg",
+        "name": "Coffee mug",
+        "type": "Morning fuel",
+        "price": 12,
         "discount": null
       }
     ]
