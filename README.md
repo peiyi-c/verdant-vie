@@ -100,4 +100,6 @@ A online shopping page practice for a fictional shop.
 
 ## Acknowledgments
 
-Icon Source: [Material Icons](https://fonts.google.com/icons), [Icons8](https://icons8.com/icons/set/twitter-x)
+Icons Source: [Material Icons](https://fonts.google.com/icons), [Icons8](https://icons8.com/icons/set/twitter-x)
+
+Photos from: [Unsplash](www.unsplash.com), [Pexels](www.pexels.com)
