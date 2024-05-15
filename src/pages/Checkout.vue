@@ -415,7 +415,7 @@
             <span class="fw-bold">Payment information</span>
           </div>
           <p>
-            Payment method:
+            Selected payment method:
             <span class="fw-bold text-warning">{{ payMethod }}</span>
           </p>
           <!-- invoice information -->
