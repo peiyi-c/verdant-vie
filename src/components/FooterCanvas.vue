@@ -46,4 +46,10 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+#offcanvasFooter {
+  .offcanvas-body {
+    letter-spacing: 1px;
+  }
+}
+</style>

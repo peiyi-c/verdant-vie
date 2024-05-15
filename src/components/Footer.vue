@@ -123,8 +123,11 @@ footer {
   }
 }
 #offcanvasFooter {
-  height: 60svh;
+  height: 70svh;
   @include breakpoint-up(medium) {
+    height: 50svh;
+  }
+  @include breakpoint-up(large) {
     height: 45svh;
   }
   opacity: 1;
