@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center display-5">Payment</h1>
+  <h1 class="text-center display-5">Thank you</h1>
 
   <section class="container pt-5">
     <!-- loading spinner -->
@@ -14,14 +14,15 @@
     </div>
     <!-- thank you & warning -->
     <div class="mt-5 row gap-5 loading" :class="{ show: !loading }">
-      <h2 class="text-center fs-3 text-warning-emphasis fw-bolder">
-        Thank you very much!
+      <h2 class="text-center fs-3 text-warning-emphasis fw-bolder lh-lg">
+        Kudos, clicking all the way here! <br />
+
+        Wish you a wonderful day.
       </h2>
       <div class="w-75 mx-auto alert alert-danger text-center" role="alert">
-        Pleae notice:
-        <strong class="text-decoration-underline">no items</strong> will be
-        shipped!<br />
-        It is a demo page.
+        Notice:
+        <strong class="text-decoration-underline text-uppercase">no</strong>
+        items will be shipped! It is a demo page.
       </div>
     </div>
 
@@ -30,8 +31,8 @@
       class="mt-3 d-flex justify-content-center loading"
       :class="{ show: !loading }"
     >
-      <button class="btn btn-md btn-danger">
-        <router-link class="nav-link" to="/">Go back to home</router-link>
+      <button class="btn btn-lg btn-danger">
+        <router-link class="nav-link" to="/">Go shopping again</router-link>
       </button>
     </div>
   </section>
