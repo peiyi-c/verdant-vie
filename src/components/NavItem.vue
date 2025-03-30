@@ -21,14 +21,13 @@ export default {
   props: ["name", "path"],
   setup() {
     const { width } = useWindowWidth();
+    const handleToggle = () => {
+      this.$emit("toggle");
+    };
     return {
       width,
+      handleToggle,
     };
-  },
-  methods: {
-    handleToggle() {
-      this.$emit("toggle");
-    },
   },
 };
 </script>

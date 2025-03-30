@@ -68,16 +68,15 @@ export default {
   setup() {
     const { imgLoaded, onImgLoad } = useImageLoad();
     const { isProductNew } = useProducts();
+    const setItem = () => {
+      this.$emit("setItem", this.item);
+    };
     return {
       imgLoaded,
       onImgLoad,
       isProductNew,
+      setItem,
     };
-  },
-  methods: {
-    setItem() {
-      this.$emit("setItem", this.item);
-    },
   },
 };
 </script>
