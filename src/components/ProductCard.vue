@@ -4,7 +4,7 @@
     data-bs-target="#productModal"
     class="card mb-3 col-6 col-sm-5 col-md-4 col-lg-3 col-xxl-2 d-flex align-items-center justify-content-end"
     :class="{ soldout: item.inStock == 0 }"
-    @click="setItem"
+    @click="clickItem"
   >
     <!-- image -->
     <div
@@ -62,22 +62,30 @@
 <script>
 import useImageLoad from "../composables/useImageLoad";
 import useProducts from "../composables/useProducts";
+
 export default {
   name: "ProductCard",
   props: ["item"],
-  setup() {
+  setup(props, { emit }) {
     const { imgLoaded, onImgLoad } = useImageLoad();
     const { isProductNew } = useProducts();
-    const setItem = () => {
-      this.$emit("setItem", this.item);
+
+    const clickItem = () => {
+      emit("setItem", props.item);
     };
+
     return {
       imgLoaded,
       onImgLoad,
       isProductNew,
-      setItem,
+      clickItem,
     };
   },
+  // methods: {
+  //   setItem() {
+  //     this.$emit("setItem", this.item);
+  //   },
+  // },
 };
 </script>
 

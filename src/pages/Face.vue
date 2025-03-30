@@ -6,7 +6,7 @@
       v-for="item in items"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
   </section>
   <!-- hero -->

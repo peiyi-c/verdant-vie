@@ -6,7 +6,7 @@
       v-for="item in items"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
 
     <h3 class="my-5 fs-3 mt-5 text-center text-secondary">

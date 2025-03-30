@@ -86,7 +86,7 @@
 import useShoppingCart from "../composables/useShoppingCart";
 
 export default {
-  name: "ProductCard",
+  name: "ProductModal",
   props: ["show", "item"],
   setup() {
     const {

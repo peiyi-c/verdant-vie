@@ -19,16 +19,21 @@ import useWindowWidth from "../composables/useWindowWidth";
 export default {
   name: "NavItem",
   props: ["name", "path"],
-  setup() {
+  setup({ emit }) {
     const { width } = useWindowWidth();
     const handleToggle = () => {
-      this.$emit("toggle");
+      emit("toggle");
     };
     return {
       width,
       handleToggle,
     };
   },
+  // methods: {
+  //   handleToggle() {
+  //     this.$emit("toggle");
+  //   },
+  // },
 };
 </script>
 

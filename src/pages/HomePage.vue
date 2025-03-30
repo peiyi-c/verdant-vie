@@ -14,31 +14,31 @@
       v-for="item in hair"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
     <ProductCard
       v-for="item in body"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
     <ProductCard
       v-for="item in face"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
     <ProductCard
       v-for="item in home_style"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
     <ProductCard
       v-for="item in accessory"
       :key="item.id"
       :item="item"
-      @set-item="(item) => (modalItem = item)"
+      @setItem="(item) => (modalItem = item)"
     />
   </section>
   <!-- product modal -->
